@@ -23,17 +23,30 @@ export default function CartContainer() {
   const createCartItems = (itemsInCart: CartItem[]): CartItemInfo[] => {
     const cartItems: CartItemInfo[] = [];
     itemsInCart.forEach((itemInCart) => {
-      const serviceItem = services[itemInCart.year].find((service) => service.id === itemInCart.id);
-      if (serviceItem) {
-        cartItems.push(createCartItem(serviceItem, itemInCart));
+      const service = services[itemInCart.year].find((service) => service.id === itemInCart.id);
+      if (service) {
+        cartItems.push(createCartItem(service, itemInCart));
       }
     });
     return cartItems;
   };
 
   const addItemToCart = (selectedItem: CartItem) => {
-    if (!checkIfItemIsAdded(selectedItem.id)) {
-      setCart((prev) => [...prev, selectedItem]);
+    const requireToUpdateQuantity = checkIfItemIsAdded(selectedItem.id);
+    if (requireToUpdateQuantity) {
+      setCart((prev) =>
+        prev.map((cartItem) => {
+          if (cartItem.id === selectedItem.id) {
+            return {
+              ...cartItem,
+              quantity: cartItem.quantity + 1,
+            };
+          }
+          return cartItem;
+        }),
+      );
+    } else {
+      setCart((prev) => [...prev, { ...selectedItem, quantity: 0 }]);
     }
   };
 
