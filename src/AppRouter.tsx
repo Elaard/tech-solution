@@ -1,5 +1,5 @@
 import React from 'react';
-import Layout from './components/Layout';
+import Layout from './components/Layout/Layout';
 import ErrorPage from './pages/ErrorPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Routes } from './Routes';

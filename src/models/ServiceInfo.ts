@@ -1,7 +1,8 @@
-interface SingleServiceInfo {
+export interface SingleServiceInfo {
   id: string;
   label: string;
   cost: number;
+  description: string;
   requirePackage?: boolean;
 }
 
@@ -10,7 +11,7 @@ interface AdditionalService {
   cost: number;
 }
 
-interface PackageServiceInfo extends Omit<SingleServiceInfo, 'requirePackage'> {
+export interface PackageServiceInfo extends Omit<SingleServiceInfo, 'requirePackage'> {
   additionalServices: AdditionalService[];
   packageComposedOfServices: string[];
 }

@@ -1,0 +1,16 @@
+.cart {
+  position: relative;
+  &__img {
+    position: absolute;
+    top: 50%;
+    right: 0;
+    transform: translateY(-50%);
+    height: 6rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    &:hover {
+      scale: 1.2;
+      transform: translateY(calc(-50% + 0.6rem));
+    }
+  }
+}

@@ -1,0 +1,21 @@
+.layout {
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  height: 16vh;
+  padding: 0 20%;
+  background-color: black;
+  &__h1 {
+    font-size: 3rem;
+    line-height: 16vh;
+    color: $color-light-blue;
+    font-style: italic;
+    text-transform: uppercase;
+  }
+
+  > * {
+    flex-basis: 100%;
+  }
+}
