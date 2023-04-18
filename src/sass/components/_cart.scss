@@ -1,5 +1,10 @@
 .cart {
-  position: relative;
+  position: absolute;
+  top: 50%;
+  right: 20%;
+  transform: translateY(-50%);
+  height: 6rem;
+  width: 6rem;
   &__img {
     position: absolute;
     top: 50%;
@@ -12,5 +17,14 @@
       scale: 1.2;
       transform: translateY(calc(-50% + 0.6rem));
     }
+  }
+  &__quantity {
+    position: absolute;
+    top: 60%;
+    left: 80%;
+    font-size: 3rem;
+    width: 2rem;
+    color: white;
+    text-align: center;
   }
 }

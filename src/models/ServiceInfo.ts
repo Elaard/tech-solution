@@ -1,22 +1,15 @@
-export interface SingleServiceInfo {
+interface BasicServiceInfo {
   id: string;
-  label: string;
-  cost: number;
+  price: number;
+}
+
+export interface ServiceInfo extends BasicServiceInfo {
+  name: string;
   description: string;
-  requirePackage?: boolean;
-}
-
-interface AdditionalService {
-  id: string;
-  cost: number;
-}
-
-export interface PackageServiceInfo extends Omit<SingleServiceInfo, 'requirePackage'> {
-  additionalServices: AdditionalService[];
-  packageComposedOfServices: string[];
-}
-
-export interface ServiceInfo {
-  singleServiceList: SingleServiceInfo[];
-  packageServiceList: PackageServiceInfo[];
+  //services included as a package when selecting that particular service
+  includedServices: BasicServiceInfo[];
+  //services required to select that particular service
+  requiredServices: BasicServiceInfo[];
+  //how many services require to obtain that particular service
+  ammountOfRequiredServices: number;
 }

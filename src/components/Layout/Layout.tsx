@@ -1,13 +1,13 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import Cart from '../Cart/Cart';
+import CartContainer from '../Cart/CartContainer';
 
 const Layout = () => {
   return (
     <div className="layout">
       <nav className="navbar">
         <h1 className="navbar__h1">Tech solutions</h1>
-        <Cart />
+        <CartContainer />
       </nav>
       <Outlet />
     </div>

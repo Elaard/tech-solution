@@ -4,6 +4,7 @@ import ErrorPage from './pages/ErrorPage';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import { Routes } from './Routes';
 import Home from './pages/Home';
+import ServicesContext from './contexts/ServicesContext';
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ const router = createBrowserRouter([
   },
 ]);
 
-const AppRouter = () => <RouterProvider router={router} />;
+const AppRouter = () => (
+  <ServicesContext>
+    <RouterProvider router={router} />
+  </ServicesContext>
+);
 
 export default AppRouter;
