@@ -1,0 +1,64 @@
+.service-list-element {
+  position: relative;
+  transition: all 0.2s;
+  margin: 2rem 4rem 6rem 0;
+  &:hover {
+    scale: 1.05;
+  }
+  &__description {
+    display: flex;
+    color: white;
+    background-color: black;
+    height: 20vh;
+    cursor: pointer;
+    min-height: 20rem;
+    font-size: 2rem;
+  }
+  &__information {
+    position: relative;
+    width: 70%;
+  }
+  &__pricing {
+    position: relative;
+    width: 30%;
+  }
+  &__service-static-name {
+    position: absolute;
+    top: 30%;
+    left: 10%;
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
+  &__service-name {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    text-transform: uppercase;
+  }
+  &__service-static-price {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 20%;
+    font-size: 3rem;
+    text-transform: uppercase;
+  }
+  &__service-price {
+    position: absolute;
+    transform: translate(-50%, -50%);
+    top: 65%;
+    right: 5%;
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  &__actions {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    margin: auto;
+    margin: 1rem 2rem 0 0;
+    text-align: right;
+  }
+  &__servies {
+  }
+}

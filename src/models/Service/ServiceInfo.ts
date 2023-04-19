@@ -11,6 +11,7 @@ export interface BasicService {
 export interface AdditionalService {
   id: ServiceId;
   price: ServicePrice;
+  description: string;
 }
 export interface ServiceToOrder extends BasicService {
   year: ServiceYear;

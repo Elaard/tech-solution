@@ -1,11 +1,11 @@
 import React from 'react';
 import { useServiceContext } from '../../contexts/ServicesContext';
-import ServiceList from './ServiceList';
+import ServiceFilterList from './ServiceFilterList';
 import { useServiceFilterContext } from '../../contexts/ServicesFilterContext';
 import { ServiceAsFilter } from '../../models/Service/ServiceAsFilter';
 import { BasicService } from '../../models/Service/ServiceInfo';
 
-export default function ServiceListContainer() {
+export default function ServiceFilterListContainer() {
   const { getBasicServices } = useServiceContext();
   const { addFilter, removeFilter, isFilterEnabled } = useServiceFilterContext();
 
@@ -16,5 +16,5 @@ export default function ServiceListContainer() {
 
   const services = getServiceAsFilter(basicServices);
 
-  return <ServiceList services={services} removeFilter={removeFilter} addFilter={addFilter} />;
+  return <ServiceFilterList services={services} removeFilter={removeFilter} addFilter={addFilter} />;
 }

@@ -1,0 +1,9 @@
+.service-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.service-list--single {
+  width: 80%;
+  margin: auto;
+}

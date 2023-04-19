@@ -7,8 +7,8 @@ interface ServiceListElementProps {
   removeFilter: (filterId: string) => void;
 }
 
-export default function ServiceListElement({ service, addFilter, removeFilter }: ServiceListElementProps) {
-  const className = service.isEnabled ? 'service-filter-list__element service-filter-list__element--enabled' : 'service-filter-list__element';
+export default function ServiceFilterListElement({ service, addFilter, removeFilter }: ServiceListElementProps) {
+  const className = service.isEnabled ? 'filter-list-element filter-list-element--enabled' : 'filter-list-element';
 
   const onClick = () => {
     const actionFn = service.isEnabled ? removeFilter : addFilter;
@@ -17,7 +17,7 @@ export default function ServiceListElement({ service, addFilter, removeFilter }:
 
   return (
     <li className={className} onClick={onClick}>
-      {service.name}
+      <p className="filter-list-element__text">{service.name}</p>
     </li>
   );
 }

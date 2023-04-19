@@ -1,0 +1,24 @@
+.filter-list-element--enabled {
+  color: white;
+  background-color: $color-light-blue;
+}
+
+.filter-list-element {
+  position: relative;
+  cursor: pointer;
+  text-transform: uppercase;
+  padding: 0.6rem 1.4rem;
+  margin: 0 0.8rem;
+  border: 1px solid $color-light-blue;
+  &:hover {
+    @extend .filter-list-element--enabled;
+  }
+  &--enabled {
+    @extend .filter-list-element--enabled;
+  }
+  & > p {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

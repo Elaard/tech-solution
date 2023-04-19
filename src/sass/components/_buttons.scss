@@ -1,0 +1,20 @@
+button {
+  cursor: pointer;
+}
+
+.service-btn {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem 4rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  background-color: $color-light-pink;
+  color: white;
+  border: 1px solid transparent;
+  transition: background-color 0.3s;
+  &:hover {
+    background-color: white;
+    color: $color-light-pink;
+    border: 2px solid $color-light-pink;
+  }
+}

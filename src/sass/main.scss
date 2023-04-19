@@ -8,7 +8,12 @@
 @import 'base/typography';
 
 @import 'components/layout';
+@import 'components/buttons';
 @import 'components/cart.scss';
+@import 'components/service-list.scss';
 @import 'components/service-filter-list.scss';
+@import 'components/service-list-element.scss';
+@import 'components/included-service-list.scss';
+@import 'components/filter-list-element.scss';
 
 @import 'pages/home';

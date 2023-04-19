@@ -1,6 +1,6 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
-import ServiceListElement from './ServiceListElement';
+import ServiceFilterListElement from './ServiceFilterListElement';
 import { ServiceAsFilter } from '../../models/Service/ServiceAsFilter';
 
 describe('should display service name', () => {
@@ -8,7 +8,7 @@ describe('should display service name', () => {
     const addFilter = jest.fn();
     const removeFilter = jest.fn();
     const service: ServiceAsFilter = { id: 'tv', isEnabled: false, name: 'Television' };
-    const { getByText } = render(<ServiceListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
+    const { getByText } = render(<ServiceFilterListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
 
     getByText(service.name);
   });
@@ -19,7 +19,7 @@ describe('should call proper function based on service.isEnabled property', () =
     const addFilter = jest.fn();
     const removeFilter = jest.fn();
     const service: ServiceAsFilter = { id: 'tv', isEnabled: false, name: 'Television' };
-    const { getByText } = render(<ServiceListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
+    const { getByText } = render(<ServiceFilterListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
 
     fireEvent.click(getByText(service.name));
 
@@ -30,7 +30,7 @@ describe('should call proper function based on service.isEnabled property', () =
     const addFilter = jest.fn();
     const removeFilter = jest.fn();
     const service: ServiceAsFilter = { id: 'tv', isEnabled: true, name: 'Television' };
-    const { getByText } = render(<ServiceListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
+    const { getByText } = render(<ServiceFilterListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
 
     fireEvent.click(getByText(service.name));
 
@@ -44,7 +44,7 @@ describe('should call function with service id', () => {
     const addFilter = jest.fn();
     const removeFilter = jest.fn();
     const service: ServiceAsFilter = { id: 'tv', isEnabled: false, name: 'Television' };
-    const { getByText } = render(<ServiceListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
+    const { getByText } = render(<ServiceFilterListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
 
     fireEvent.click(getByText(service.name));
 
@@ -54,7 +54,7 @@ describe('should call function with service id', () => {
     const addFilter = jest.fn();
     const removeFilter = jest.fn();
     const service: ServiceAsFilter = { id: 'tv', isEnabled: true, name: 'Television' };
-    const { getByText } = render(<ServiceListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
+    const { getByText } = render(<ServiceFilterListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
 
     fireEvent.click(getByText(service.name));
 
@@ -67,7 +67,7 @@ describe('should have proper class name based on service.isEnabled property', ()
     const addFilter = jest.fn();
     const removeFilter = jest.fn();
     const service: ServiceAsFilter = { id: 'tv', isEnabled: false, name: 'Television' };
-    const { getByText } = render(<ServiceListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
+    const { getByText } = render(<ServiceFilterListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
 
     const element = getByText(service.name);
 
@@ -77,7 +77,7 @@ describe('should have proper class name based on service.isEnabled property', ()
     const addFilter = jest.fn();
     const removeFilter = jest.fn();
     const service: ServiceAsFilter = { id: 'tv', isEnabled: true, name: 'Television' };
-    const { getByText } = render(<ServiceListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
+    const { getByText } = render(<ServiceFilterListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
 
     const element = getByText(service.name);
 

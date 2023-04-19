@@ -1,0 +1,22 @@
+.included-service-list {
+  margin-top: 2rem;
+  margin-left: 2rem;
+  font-size: 1.6rem;
+  &__element {
+    display: flex;
+    align-items: center;
+    margin: 0.4rem 0;
+  }
+  &__img {
+    height: 2rem;
+  }
+  &__name {
+    margin-left: 1rem;
+  }
+  &__separator {
+    margin: 0 1rem;
+    color: $color-light-blue;
+  }
+  &__description {
+  }
+}

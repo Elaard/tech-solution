@@ -1,5 +1,5 @@
 import React from 'react';
-import ServiceListElement from './ServiceListElement';
+import ServiceFilterListElement from './ServiceFilterListElement';
 import { ServiceAsFilter } from '../../models/Service/ServiceAsFilter';
 
 interface ServiceListProps {
@@ -8,11 +8,11 @@ interface ServiceListProps {
   removeFilter: (filterId: string) => void;
 }
 
-export default function ServiceList({ services, ...rest }: ServiceListProps) {
+export default function ServiceFilterList({ services, ...rest }: ServiceListProps) {
   return (
     <ul className="service-filter-list">
       {services.map((service) => (
-        <ServiceListElement key={'filter' + service.id} service={service} {...rest} />
+        <ServiceFilterListElement key={'filter' + service.id} service={service} {...rest} />
       ))}
     </ul>
   );

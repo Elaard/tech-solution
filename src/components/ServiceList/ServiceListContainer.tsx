@@ -1,15 +1,24 @@
 import React from 'react';
-import SingleServiceList from './singleServiceList';
-import PackageServiceList from './PackageServiceList';
+import { useServiceFilterContext } from '../../contexts/ServicesFilterContext';
+import ServiceList from './ServiceList';
+import { useServiceContext } from '../../contexts/ServicesContext';
+import { ServiceInfoVM } from '../../models/ViewModels/ServiceInfoVM';
 
 export default function ServiceListContainer() {
-  const singleServiceList = [];
-  const packageServiceList = [];
+  const { getBasicServiceById } = useServiceContext();
+  const { getFilteredServices } = useServiceFilterContext();
 
-  return (
-    <>
-      <SingleServiceList services={singleServiceList} />
-      <PackageServiceList services={packageServiceList} />
-    </>
-  );
+  const services = getFilteredServices();
+
+  const servicesToDisplay: ServiceInfoVM[] = services.map((service) => {
+    return {
+      ...service,
+      includedServices: service.includedServices.map((includeService) => ({
+        ...includeService,
+        name: getBasicServiceById(includeService.id)?.name ?? '',
+      })),
+    };
+  });
+
+  return <ServiceList services={servicesToDisplay} />;
 }

@@ -6,14 +6,16 @@ import { BasicService } from '../models/Service/ServiceInfo';
 export interface ServicesContext {
   services: ServiceOffer;
   getBasicServices: () => BasicService[];
+  getBasicServiceById: (basicServiceId: string) => BasicService | undefined;
 }
 
 const ServicesProvider = createContext<ServicesContext>({
   services: {
-    basicServices: [],
-    servicesToOrder: [],
+    services: [],
+    packages: [],
   },
   getBasicServices: () => [],
+  getBasicServiceById: () => undefined,
 });
 
 ServicesProvider.displayName = 'ServicesContextProvider';
@@ -27,7 +29,7 @@ interface ServicesContextProps {
 }
 
 const services: ServiceOffer = {
-  basicServices: [
+  services: [
     {
       id: 'internet',
       name: 'Internet',
@@ -45,7 +47,7 @@ const services: ServiceOffer = {
       name: 'Dekoder 4K',
     },
   ],
-  servicesToOrder: [
+  packages: [
     {
       id: 'internet_package',
       name: 'Internet',
@@ -56,6 +58,7 @@ const services: ServiceOffer = {
         {
           id: 'internet',
           price: 0,
+          description: 'internet za prawie darmo',
         },
       ],
     },
@@ -69,6 +72,7 @@ const services: ServiceOffer = {
         {
           id: 'tv',
           price: 0,
+          description: 'telewizja za prawie darmo',
         },
       ],
     },
@@ -82,6 +86,7 @@ const services: ServiceOffer = {
         {
           id: 'abo',
           price: 0,
+          description: 'abonament za prawie darmo',
         },
       ],
     },
@@ -95,6 +100,7 @@ const services: ServiceOffer = {
         {
           id: 'decoder4k',
           price: 0,
+          description: 'decoder4k za prawie darmo',
         },
       ],
     },
@@ -108,14 +114,17 @@ const services: ServiceOffer = {
         {
           id: 'internet',
           price: 0,
+          description: 'internet za prawie darmo',
         },
         {
           id: 'tv',
           price: 0,
+          description: 'tv za prawie darmo',
         },
         {
           id: 'decoder4k',
           price: 0,
+          description: 'decoder4k za prawie darmo',
         },
       ],
     },
@@ -129,10 +138,12 @@ const services: ServiceOffer = {
         {
           id: 'internet',
           price: 0,
+          description: 'internet za prawie darmo',
         },
         {
           id: 'abo',
           price: 0,
+          description: 'abo za prawie darmo',
         },
       ],
     },
@@ -141,9 +152,12 @@ const services: ServiceOffer = {
 
 const ServicesContext = ({ children }: ServicesContextProps) => {
   const getBasicServices = () => {
-    return services.basicServices;
+    return services.services;
   };
-  return <ServicesProvider.Provider value={{ services, getBasicServices }}>{children}</ServicesProvider.Provider>;
+  const getBasicServiceById = (basicServiceId: string) => {
+    return services.services.find(({ id }) => id === basicServiceId);
+  };
+  return <ServicesProvider.Provider value={{ services, getBasicServices, getBasicServiceById }}>{children}</ServicesProvider.Provider>;
 };
 
 export default ServicesContext;

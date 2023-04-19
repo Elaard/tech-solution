@@ -1,12 +1,12 @@
 import React from 'react';
 import { renderWithServicesAndServicesFilterProviders } from '../../testUtils/withProviders';
-import ServiceListContainer from './ServiceListContainer';
+import ServiceFilterListContainer from './ServiceFilterListContainer';
 import { ServiceOffer } from '../../models/Service/ServiceOffer';
 
 describe('should prepare data for filter components', () => {
   it('as above', () => {
     const services: ServiceOffer = {
-      basicServices: [
+      services: [
         {
           id: 'internet',
           name: 'Internet',
@@ -24,7 +24,7 @@ describe('should prepare data for filter components', () => {
           name: 'Dekoder 4K',
         },
       ],
-      servicesToOrder: [
+      packages: [
         {
           id: 'internet_package',
           name: 'Internet',
@@ -35,6 +35,7 @@ describe('should prepare data for filter components', () => {
             {
               id: 'internet',
               price: 0,
+              description: '',
             },
           ],
         },
@@ -48,6 +49,7 @@ describe('should prepare data for filter components', () => {
             {
               id: 'tv',
               price: 0,
+              description: '',
             },
           ],
         },
@@ -61,6 +63,7 @@ describe('should prepare data for filter components', () => {
             {
               id: 'abo',
               price: 0,
+              description: '',
             },
           ],
         },
@@ -74,6 +77,7 @@ describe('should prepare data for filter components', () => {
             {
               id: 'decoder4k',
               price: 0,
+              description: '',
             },
           ],
         },
@@ -87,14 +91,17 @@ describe('should prepare data for filter components', () => {
             {
               id: 'internet',
               price: 0,
+              description: '',
             },
             {
               id: 'tv',
               price: 0,
+              description: '',
             },
             {
               id: 'decoder4k',
               price: 0,
+              description: '',
             },
           ],
         },
@@ -108,19 +115,21 @@ describe('should prepare data for filter components', () => {
             {
               id: 'internet',
               price: 0,
+              description: '',
             },
             {
               id: 'abo',
               price: 0,
+              description: '',
             },
           ],
         },
       ],
     };
 
-    const { getByText } = renderWithServicesAndServicesFilterProviders(services, <ServiceListContainer />);
+    const { getByText } = renderWithServicesAndServicesFilterProviders(services, <ServiceFilterListContainer />);
 
-    services.basicServices.forEach((service) => {
+    services.services.forEach((service) => {
       getByText(service.name);
     });
   });
