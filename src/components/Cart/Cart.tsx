@@ -1,5 +1,5 @@
 import React from 'react';
-import { CartItemInfo } from '../../models/CartItemInfo';
+import { CartItemInfo } from '../../models/Cart/CartItemInfo';
 
 interface CartProps {
   items: CartItemInfo[];

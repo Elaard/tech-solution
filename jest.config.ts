@@ -5,4 +5,5 @@ export default module.exports = {
     '^.+\\.(ts|tsx)?$': 'ts-jest',
     '^.+\\.(js|jsx)$': 'babel-jest',
   },
+  setupFilesAfterEnv: ['@testing-library/jest-dom/extend-expect'],
 };

@@ -1,13 +1,19 @@
-import React from 'react';
+import React, { createContext } from 'react';
 import { useContext } from 'react';
-import { ServiceOffer } from '../models/ServiceOffer';
+import { ServiceOffer } from '../models/Service/ServiceOffer';
+import { BasicService } from '../models/Service/ServiceInfo';
 
 export interface ServicesContext {
   services: ServiceOffer;
+  getBasicServices: () => BasicService[];
 }
 
-const ServicesProvider = React.createContext<ServicesContext>({
-  services: {},
+const ServicesProvider = createContext<ServicesContext>({
+  services: {
+    basicServices: [],
+    servicesToOrder: [],
+  },
+  getBasicServices: () => [],
 });
 
 ServicesProvider.displayName = 'ServicesContextProvider';
@@ -20,287 +26,124 @@ interface ServicesContextProps {
   children: JSX.Element;
 }
 
-const ServicesContext = ({ children }: ServicesContextProps) => {
-  const services: ServiceOffer = {
-    2023: [
-      {
-        id: 'internet',
-        name: 'Internet',
-        price: 39,
-        description: 'internet',
-        includedServices: [],
-        requiredServices: [],
-        ammountOfRequiredServices: 0,
-      },
-      {
-        id: 'tv',
-        name: 'Telewizja',
-        price: 49,
-        description: 'tv',
-        includedServices: [],
-        requiredServices: [],
-        ammountOfRequiredServices: 0,
-      },
-      {
-        id: 'abo',
-        name: 'Abonament',
-        price: 29,
-        description: 'abo',
-        includedServices: [],
-        requiredServices: [],
-        ammountOfRequiredServices: 0,
-      },
-      {
-        id: 'decoder',
-        name: 'Decoder 4k',
-        price: 29,
-        description: 'decoder',
-        includedServices: [],
-        requiredServices: [
-          {
-            id: 'internet&tv',
-            price: 0,
-          },
-          {
-            id: 'tv',
-            price: 0,
-          },
-        ],
-        ammountOfRequiredServices: 1,
-      },
-      {
-        id: 'internet&tv',
-        name: 'Internet + telewizja',
-        price: 79,
-        description: 'internet + tv',
-        includedServices: [
-          {
-            id: 'internet',
-            price: 0,
-          },
-          {
-            id: 'tv',
-            price: 0,
-          },
-          {
-            id: 'abo',
-            price: 0,
-          },
-        ],
-        requiredServices: [],
-        ammountOfRequiredServices: 0,
-      },
-      {
-        id: 'internet&abo',
-        name: 'Internet + Abonament telefoniczny',
-        price: 64,
-        description: 'Internet + Abonament telefoniczny',
-        includedServices: [
-          {
-            id: 'decoder',
-            price: 0,
-          },
-        ],
-        requiredServices: [
-          {
-            id: 'internet',
-            price: 0,
-          },
-          {
-            id: 'abo',
-            price: 0,
-          },
-        ],
-        ammountOfRequiredServices: 0,
-      },
-    ],
-    2024: [
-      {
-        id: 'internet',
-        name: 'Internet',
-        price: 49,
-        description: 'internet',
-        includedServices: [],
-        requiredServices: [],
-        ammountOfRequiredServices: 0,
-      },
-      {
-        id: 'tv',
-        name: 'Telewizja',
-        price: 49,
-        description: 'tv',
-        includedServices: [],
-        requiredServices: [],
-        ammountOfRequiredServices: 0,
-      },
-      {
-        id: 'abo',
-        name: 'Abonament',
-        price: 29,
-        description: 'abo',
-        includedServices: [],
-        requiredServices: [],
-        ammountOfRequiredServices: 0,
-      },
-      {
-        id: 'decoder',
-        name: 'Decoder 4k',
-        price: 29,
-        description: 'decoder',
-        includedServices: [],
-        requiredServices: [
-          {
-            id: 'internet&tv',
-            price: 0,
-          },
-          {
-            id: 'tv',
-            price: 0,
-          },
-        ],
-        ammountOfRequiredServices: 1,
-      },
-      {
-        id: 'internet&tv',
-        name: 'Internet + telewizja',
-        price: 89,
-        description: 'internet + tv',
-        includedServices: [
-          {
-            id: 'internet',
-            price: 0,
-          },
-          {
-            id: 'tv',
-            price: 0,
-          },
-          {
-            id: 'abo',
-            price: 0,
-          },
-        ],
-        requiredServices: [],
-        ammountOfRequiredServices: 0,
-      },
-      {
-        id: 'internet&abo',
-        name: 'Internet + Abonament telefoniczny',
-        price: 64,
-        description: 'Internet + Abonament telefoniczny',
-        includedServices: [
-          {
-            id: 'decoder',
-            price: 0,
-          },
-        ],
-        requiredServices: [
-          {
-            id: 'internet',
-            price: 0,
-          },
-          {
-            id: 'abo',
-            price: 0,
-          },
-        ],
-        ammountOfRequiredServices: 0,
-      },
-    ],
-    2025: [
-      {
-        id: 'internet',
-        name: 'Internet',
-        price: 59,
-        description: 'internet',
-        includedServices: [],
-        requiredServices: [],
-        ammountOfRequiredServices: 0,
-      },
-      {
-        id: 'tv',
-        name: 'Telewizja',
-        price: 59,
-        description: 'tv',
-        includedServices: [],
-        requiredServices: [],
-        ammountOfRequiredServices: 0,
-      },
-      {
-        id: 'abo',
-        name: 'Abonament',
-        price: 29,
-        description: 'abo',
-        includedServices: [],
-        requiredServices: [],
-        ammountOfRequiredServices: 0,
-      },
-      {
-        id: 'decoder',
-        name: 'Decoder 4k',
-        price: 29,
-        description: 'decoder',
-        includedServices: [],
-        requiredServices: [
-          {
-            id: 'internet&tv',
-            price: 0,
-          },
-          {
-            id: 'tv',
-            price: 0,
-          },
-        ],
-        ammountOfRequiredServices: 1,
-      },
-      {
-        id: 'internet&tv',
-        name: 'Internet + telewizja',
-        price: 99,
-        description: 'internet + tv',
-        includedServices: [
-          {
-            id: 'internet',
-            price: 0,
-          },
-          {
-            id: 'tv',
-            price: 0,
-          },
-          {
-            id: 'abo',
-            price: 0,
-          },
-        ],
-        requiredServices: [],
-        ammountOfRequiredServices: 0,
-      },
-      {
-        id: 'internet&abo',
-        name: 'Internet + Abonament telefoniczny',
-        price: 64,
-        description: 'Internet + Abonament telefoniczny',
-        includedServices: [
-          {
-            id: 'decoder',
-            price: 0,
-          },
-        ],
-        requiredServices: [
-          {
-            id: 'internet',
-            price: 0,
-          },
-          {
-            id: 'abo',
-            price: 0,
-          },
-        ],
-        ammountOfRequiredServices: 0,
-      },
-    ],
-  };
+const services: ServiceOffer = {
+  basicServices: [
+    {
+      id: 'internet',
+      name: 'Internet',
+    },
+    {
+      id: 'tv',
+      name: 'Telewizja',
+    },
+    {
+      id: 'abo',
+      name: 'Abonament telefoniczny',
+    },
+    {
+      id: 'decoder4k',
+      name: 'Dekoder 4K',
+    },
+  ],
+  servicesToOrder: [
+    {
+      id: 'internet_package',
+      name: 'Internet',
+      year: 2023,
+      price: 39,
+      description: 'internet',
+      includedServices: [
+        {
+          id: 'internet',
+          price: 0,
+        },
+      ],
+    },
+    {
+      id: 'tv_package',
+      name: 'Telewizja',
+      year: 2023,
+      price: 49,
+      description: 'tv',
+      includedServices: [
+        {
+          id: 'tv',
+          price: 0,
+        },
+      ],
+    },
+    {
+      id: 'abo_package',
+      name: 'Abonament',
+      year: 2023,
+      price: 29,
+      description: 'abo',
+      includedServices: [
+        {
+          id: 'abo',
+          price: 0,
+        },
+      ],
+    },
+    {
+      id: 'decoder_package',
+      name: 'Decoder 4k',
+      year: 2023,
+      price: 29,
+      description: 'decoder',
+      includedServices: [
+        {
+          id: 'decoder4k',
+          price: 0,
+        },
+      ],
+    },
+    {
+      id: 'internet&tv_package',
+      name: 'Internet + telewizja',
+      year: 2023,
+      price: 79,
+      description: 'internet + tv',
+      includedServices: [
+        {
+          id: 'internet',
+          price: 0,
+        },
+        {
+          id: 'tv',
+          price: 0,
+        },
+        {
+          id: 'decoder4k',
+          price: 0,
+        },
+      ],
+    },
+    {
+      id: 'internet&abo_package',
+      name: 'Internet + Abonament telefoniczny',
+      year: 2023,
+      price: 64,
+      description: 'Internet + Abonament telefoniczny',
+      includedServices: [
+        {
+          id: 'internet',
+          price: 0,
+        },
+        {
+          id: 'abo',
+          price: 0,
+        },
+      ],
+    },
+  ],
+};
 
-  return <ServicesProvider.Provider value={{ services }}>{children}</ServicesProvider.Provider>;
+const ServicesContext = ({ children }: ServicesContextProps) => {
+  const getBasicServices = () => {
+    return services.basicServices;
+  };
+  return <ServicesProvider.Provider value={{ services, getBasicServices }}>{children}</ServicesProvider.Provider>;
 };
 
 export default ServicesContext;

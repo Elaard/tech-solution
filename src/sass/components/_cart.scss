@@ -14,8 +14,8 @@
     cursor: pointer;
     transition: all 0.3s;
     &:hover {
-      scale: 1.2;
-      transform: translateY(calc(-50% + 0.6rem));
+      scale: 1.1;
+      transform: translateY(calc(-50% + 0.3rem));
     }
   }
   &__quantity {

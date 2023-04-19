@@ -1,8 +1,5 @@
 import { useCallback, useEffect } from 'react';
-
-export type CartEvents = 'addItemToCart' | 'removeItemFromCart';
-
-type CustomEvents = CartEvents;
+import { CustomEvents } from '../models/Events/CustomEvents';
 
 export function createCustomEvent<T>(eventName: CustomEvents, data: T) {
   return new CustomEvent<T>(eventName, { detail: data });
