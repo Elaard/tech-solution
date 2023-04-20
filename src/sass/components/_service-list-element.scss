@@ -16,6 +16,7 @@
   }
   &__information {
     position: relative;
+    margin-right: 1rem;
     width: 70%;
   }
   &__pricing {
@@ -23,32 +24,35 @@
     width: 30%;
   }
   &__service-static-name {
-    position: absolute;
-    top: 30%;
-    left: 10%;
+    position: relative;
+    height: 50%;
+    margin-left: 8rem;
     font-size: 3rem;
     text-transform: uppercase;
+    & > span {
+      position: absolute;
+      bottom: 10%;
+    }
   }
   &__service-name {
-    position: absolute;
-    top: 50%;
-    left: 20%;
+    height: 50%;
+    margin-left: 10rem;
+    word-wrap: break-word;
     text-transform: uppercase;
   }
   &__service-static-price {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 50%;
-    left: 20%;
+    position: relative;
     font-size: 3rem;
+    height: 60%;
     text-transform: uppercase;
+    & > span {
+      position: absolute;
+      bottom: 10%;
+    }
   }
   &__service-price {
-    position: absolute;
-    transform: translate(-50%, -50%);
-    top: 65%;
-    right: 5%;
     font-size: 2rem;
+    margin-left: 30%;
     text-transform: uppercase;
   }
   &__footer {
