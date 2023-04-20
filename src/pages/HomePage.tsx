@@ -5,7 +5,7 @@ import ServiceFilterListContainer from '../components/ServicesFilterList/Service
 import ServiceListContainer from '../components/ServiceList/ServiceListContainer';
 import ServiceYearFilterListContainer from '../components/ServiceYearFilterList/ServiceYearFilterListContainer';
 
-export default function Home() {
+export default function HomePage() {
   const { services } = useServiceContext();
   return (
     <ServicesFilterContext services={services}>
