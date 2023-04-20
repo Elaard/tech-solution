@@ -7,12 +7,12 @@ import { BasicService } from '../../models/Service/ServiceInfo';
 
 export default function ServiceFilterListContainer() {
   const { getBasicServices } = useServiceContext();
-  const { addFilter, removeFilter, isFilterEnabled } = useServiceFilterContext();
+  const { addFilter, removeFilter, isIncludedServiceFilterEnabled } = useServiceFilterContext();
 
   const basicServices = getBasicServices();
 
   const getServiceAsFilter = (services: BasicService[]): ServiceAsFilter[] =>
-    services.map((service) => ({ ...service, isEnabled: isFilterEnabled(service.id) }));
+    services.map((service) => ({ ...service, isEnabled: isIncludedServiceFilterEnabled(service.id) }));
 
   const services = getServiceAsFilter(basicServices);
 

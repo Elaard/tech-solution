@@ -1,19 +1,27 @@
-import React, { createContext, useState } from 'react';
+import React, { createContext, useCallback, useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { ServiceOffer } from '../models/Service/ServiceOffer';
 import { ServiceToOrder } from '../models/Service/ServiceInfo';
+import { ServiceYear } from '../models/Service/ServiceYear';
+import { ServiceAvailableYears } from '../models/Service/ServiceAvailableYears';
 
 export interface ServicesFilterContext {
   addFilter: (filterId: string) => void;
   removeFilter: (filterId: string) => void;
-  isFilterEnabled: (filterId: string) => boolean;
+  setYearFilter: (year: ServiceYear) => void;
+  isYearFilterEnabled: (providedYear: ServiceYear) => boolean;
+  isIncludedServiceFilterEnabled: (filterId: string) => boolean;
+  getAvailableYears: () => ServiceAvailableYears;
   getFilteredServices: () => ServiceToOrder[];
 }
 
 const ServicesFilterProvider = createContext<ServicesFilterContext>({
   addFilter: () => null,
   removeFilter: () => null,
-  isFilterEnabled: () => false,
+  setYearFilter: () => null,
+  isYearFilterEnabled: () => false,
+  isIncludedServiceFilterEnabled: () => false,
+  getAvailableYears: () => [],
   getFilteredServices: () => [],
 });
 
@@ -29,13 +37,25 @@ interface ServicesFilterContextProps {
 }
 
 const ServicesFilterContext = ({ children, services }: ServicesFilterContextProps) => {
-  const [filters, setFilters] = useState<string[]>([]);
+  const [includedServices, setIncludedServices] = useState<string[]>([]);
 
-  const addFilter = (filterId: string) => setFilters((prev) => [...prev, filterId]);
+  const [year, setYear] = useState<ServiceYear>(0);
 
-  const removeFilter = (FilterId: string) => setFilters((prev) => prev.filter((filter) => filter !== FilterId));
+  const getAvailableYears = useCallback(() => services.availableYears ?? [], [services.availableYears]);
 
-  const isFilterEnabled = (filterId: string) => filters.includes(filterId);
+  const getFirstAvailableYear = useCallback(() => {
+    return getAvailableYears().at(0) ?? 0;
+  }, [getAvailableYears]);
+
+  useEffect(() => {
+    setYear(getFirstAvailableYear());
+  }, [getFirstAvailableYear]);
+
+  const addFilter = (serviceId: string) => setIncludedServices((prev) => [...prev, serviceId]);
+
+  const removeFilter = (serviceId: string) => setIncludedServices((prev) => prev.filter((prevServiceId) => prevServiceId !== serviceId));
+
+  const isIncludedServiceFilterEnabled = (serviceId: string) => includedServices.includes(serviceId);
 
   const getPackageByIncludedServices = (includedServiceIds: string[]) => {
     return services.packages.filter(({ includedServices }) => {
@@ -43,20 +63,32 @@ const ServicesFilterContext = ({ children, services }: ServicesFilterContextProp
     });
   };
 
-  const getFilteredServices = () => {
-    if (!filters.length) {
-      return services.packages;
-    }
-    return getPackageByIncludedServices(filters);
+  const filterPackagesByYear = (year: ServiceYear, packages: ServiceToOrder[]) => {
+    return packages.filter((pack) => pack.year === year);
   };
+
+  const getFilteredServices = () => {
+    let packages = services.packages;
+    if (includedServices.length) {
+      packages = getPackageByIncludedServices(includedServices);
+    }
+    return filterPackagesByYear(year, packages);
+  };
+
+  const setYearFilter = (providedYear: ServiceYear) => setYear(providedYear);
+
+  const isYearFilterEnabled = (providedYear: ServiceYear) => providedYear === year;
 
   return (
     <ServicesFilterProvider.Provider
       value={{
         addFilter,
         removeFilter,
-        isFilterEnabled,
+        setYearFilter,
         getFilteredServices,
+        isYearFilterEnabled,
+        getAvailableYears,
+        isIncludedServiceFilterEnabled,
       }}
     >
       {children}

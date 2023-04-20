@@ -6,12 +6,10 @@ interface CartProps {
 }
 
 export default function Cart({ items }: CartProps) {
-  const showQuantity = items.length !== 0;
-
+  const cartImage = items.length ? '../icons/cart-pink.svg' : '../icons/cart-green.svg';
   return (
     <div className="cart">
-      <img className="cart__img" src="../icons/cart.svg" alt="cart" />
-      {showQuantity && <div className="cart__quantity">{items.length}</div>}
+      <img className="cart__img" src={cartImage} alt="cart" />
     </div>
   );
 }
