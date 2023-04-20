@@ -65,6 +65,9 @@
     padding: 1rem 2rem 0 0;
     width: 100%;
     text-align: right;
+    & > p {
+      text-transform: uppercase;
+    }
   }
   &__servies {
   }
