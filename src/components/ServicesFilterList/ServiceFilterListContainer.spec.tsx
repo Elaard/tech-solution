@@ -52,14 +52,14 @@ describe('should prepare data for filter components', () => {
           ],
         },
         {
-          id: 'decoder_package',
+          id: 'dekoder_package',
           name: 'Decoder 4k',
           year: 2023,
           price: 29,
-          description: 'decoder',
+          description: 'dekoder',
           includedServices: [
             {
-              id: 'decoder4k',
+              id: 'dekoder4k',
               price: 0,
               description: '',
             },
@@ -83,7 +83,7 @@ describe('should prepare data for filter components', () => {
               description: '',
             },
             {
-              id: 'decoder4k',
+              id: 'dekoder4k',
               price: 0,
               description: '',
             },

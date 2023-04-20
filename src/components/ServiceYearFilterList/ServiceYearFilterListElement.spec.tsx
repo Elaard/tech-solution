@@ -4,14 +4,14 @@ import ServiceYearFilterListElement from './ServiceYearFilterListElement';
 
 describe('ServiceYearFilterListElement', () => {
   it('should display expected text', () => {
-    const { getByText } = render(<ServiceYearFilterListElement year={2023} setYearFilter={jest.fn()} isYearFilterEnabled={jest.fn()} />);
+    const { getByText } = render(<ServiceYearFilterListElement year={2023} setYearFilter={jest.fn()} isYearEqualToFilterYear={jest.fn()} />);
     getByText('oferta na rok 2023', { exact: false });
   });
   it('should have additional class', () => {
     const isYearFilterEnabledMocked = jest.fn();
     isYearFilterEnabledMocked.mockReturnValue(true);
     const { getByText } = render(
-      <ServiceYearFilterListElement year={2023} setYearFilter={jest.fn()} isYearFilterEnabled={isYearFilterEnabledMocked} />,
+      <ServiceYearFilterListElement year={2023} setYearFilter={jest.fn()} isYearEqualToFilterYear={isYearFilterEnabledMocked} />,
     );
     const element = getByText('oferta na rok 2023', { exact: false });
 
@@ -21,7 +21,7 @@ describe('ServiceYearFilterListElement', () => {
     const isYearFilterEnabledMocked = jest.fn();
     isYearFilterEnabledMocked.mockReturnValue(false);
     const { getByText } = render(
-      <ServiceYearFilterListElement year={2023} setYearFilter={jest.fn()} isYearFilterEnabled={isYearFilterEnabledMocked} />,
+      <ServiceYearFilterListElement year={2023} setYearFilter={jest.fn()} isYearEqualToFilterYear={isYearFilterEnabledMocked} />,
     );
     const element = getByText('oferta na rok 2023', { exact: false });
 

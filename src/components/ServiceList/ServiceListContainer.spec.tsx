@@ -49,14 +49,14 @@ describe('ServiceListContainer', () => {
       services: dataServices,
       packages: [
         {
-          id: 'decoder_package',
+          id: 'dekoder_package',
           name: 'Dekoder 4k',
           year: 2023,
           price: 29,
           description: '',
           includedServices: [
             {
-              id: 'decoder4k',
+              id: 'dekoder4k',
               price: 0,
               description: '',
             },
@@ -73,14 +73,14 @@ describe('ServiceListContainer', () => {
       services: dataServices,
       packages: [
         {
-          id: 'decoder_package',
+          id: 'dekoder_package',
           name: 'Dekoder 4k',
           year: 2023,
           price: 29,
           description: '',
           includedServices: [
             {
-              id: 'decoder4k',
+              id: 'dekoder4k',
               price: 0,
               description: '',
             },

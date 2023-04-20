@@ -9,7 +9,7 @@ describe('should return list of years', () => {
     const getAvailableYears = jest.fn().mockReturnValue(mockedYears);
 
     const { getByText } = render(
-      <ServiceYearFilterList setYearFilter={jest.fn()} isYearFilterEnabled={jest.fn()} getAvailableYears={getAvailableYears} />,
+      <ServiceYearFilterList setYearFilter={jest.fn()} isYearEqualToFilterYear={jest.fn()} getAvailableYears={getAvailableYears} />,
     );
 
     mockedYears.forEach((year) => {
