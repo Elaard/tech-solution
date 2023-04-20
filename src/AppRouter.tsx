@@ -6,6 +6,7 @@ import { Routes } from './Routes';
 import HomePage from './pages/HomePage';
 import ServicesContext from './contexts/ServicesContext';
 import CartContext from './contexts/CartContext';
+import OrderPage from './pages/OrderPage';
 
 const router = createBrowserRouter([
   {
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
       {
         path: Routes.Home,
         element: <HomePage />,
+      },
+      {
+        path: Routes.Order,
+        element: <OrderPage />,
       },
     ],
   },

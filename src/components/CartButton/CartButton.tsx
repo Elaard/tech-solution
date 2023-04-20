@@ -1,14 +1,16 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 interface CartProps {
   hasItems: boolean;
+  redirectTo: string;
 }
 
-export default function Cart({ hasItems }: CartProps) {
+export default function CartButton({ hasItems, redirectTo }: CartProps) {
   const cartImage = hasItems ? '../icons/cart-pink.svg' : '../icons/cart-green.svg';
   return (
-    <div className="cart">
+    <Link className="cart" to={redirectTo}>
       <img className="cart__img" src={cartImage} alt="cart" />
-    </div>
+    </Link>
   );
 }
