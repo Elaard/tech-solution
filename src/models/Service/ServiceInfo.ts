@@ -6,6 +6,7 @@ import { ServiceYear } from './ServiceYear';
 export interface BasicService {
   id: ServiceId;
   name: string;
+  availableOnlyWithPackage?: boolean;
 }
 //services included in the packages
 export interface AdditionalService {

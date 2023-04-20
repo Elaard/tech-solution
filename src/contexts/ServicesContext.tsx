@@ -7,6 +7,7 @@ export interface ServicesContext {
   services: ServiceOffer;
   getBasicServices: () => BasicService[];
   getBasicServiceById: (basicServiceId: string) => BasicService | undefined;
+  isBasicServiceAvailableOnlyWithinPackage: (basicServiceId: string) => boolean;
 }
 
 const ServicesProvider = createContext<ServicesContext>({
@@ -16,6 +17,7 @@ const ServicesProvider = createContext<ServicesContext>({
   },
   getBasicServices: () => [],
   getBasicServiceById: () => undefined,
+  isBasicServiceAvailableOnlyWithinPackage: () => false,
 });
 
 ServicesProvider.displayName = 'ServicesContextProvider';
@@ -45,6 +47,7 @@ const services: ServiceOffer = {
     {
       id: 'decoder4k',
       name: 'Dekoder 4K',
+      availableOnlyWithPackage: true,
     },
   ],
   packages: [
@@ -157,7 +160,14 @@ const ServicesContext = ({ children }: ServicesContextProps) => {
   const getBasicServiceById = (basicServiceId: string) => {
     return services.services.find(({ id }) => id === basicServiceId);
   };
-  return <ServicesProvider.Provider value={{ services, getBasicServices, getBasicServiceById }}>{children}</ServicesProvider.Provider>;
+  const isBasicServiceAvailableOnlyWithinPackage = (basicServiceId: string): boolean => {
+    return !!getBasicServiceById(basicServiceId)?.availableOnlyWithPackage;
+  };
+  return (
+    <ServicesProvider.Provider value={{ services, getBasicServices, getBasicServiceById, isBasicServiceAvailableOnlyWithinPackage }}>
+      {children}
+    </ServicesProvider.Provider>
+  );
 };
 
 export default ServicesContext;

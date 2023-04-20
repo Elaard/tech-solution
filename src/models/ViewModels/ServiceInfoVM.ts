@@ -15,6 +15,8 @@ export interface ServiceInfoVM {
   year: ServiceYear;
   price: ServicePrice;
 
+  availableOnlyWithPackage: boolean;
+
   description: string;
   includedServices: AdditionalServiceVM[];
 }
