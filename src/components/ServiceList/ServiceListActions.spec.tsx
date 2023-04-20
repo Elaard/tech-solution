@@ -60,7 +60,7 @@ describe('ServiceListActions', () => {
 
     expect(queryByRole('button')).toBe(null);
   });
-  it('button should have "Dodaj" text', () => {
+  it('button should have "wybieram" text', () => {
     const service: ServiceInfoVM = {
       id: 'tv',
       description: '',
@@ -72,6 +72,6 @@ describe('ServiceListActions', () => {
     };
     const { getByRole } = render(<ServiceListActions service={service} />);
 
-    expect(getByRole('button').textContent).toBe('dodaj');
+    expect(getByRole('button').textContent).toBe('wybieram');
   });
 });
