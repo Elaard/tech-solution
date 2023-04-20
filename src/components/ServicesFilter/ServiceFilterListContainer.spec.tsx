@@ -109,6 +109,7 @@ describe('should prepare data for filter components', () => {
           ],
         },
       ],
+      availableYears: [],
     };
     const { getByText } = renderWithAllProviders(data, <ServiceFilterListContainer />);
 
