@@ -1,6 +1,6 @@
 import React from 'react';
 import { renderWithAllProviders } from '../../testUtils/withProviders';
-import ServiceYearFilterContainer from './ServiceYearFilterContainer';
+import ServiceYearFilterListContainer from './ServiceYearFilterListContainer';
 import { ServiceOffer } from '../../models/Service/ServiceOffer';
 import { dataServices } from '../../testUtils/data';
 import { fireEvent } from '@testing-library/react';
@@ -12,7 +12,7 @@ describe('ServiceYearFilterContainer', () => {
       packages: [],
       availableYears: [2023, 2024, 2025],
     };
-    const { getByText } = renderWithAllProviders(data, <ServiceYearFilterContainer />);
+    const { getByText } = renderWithAllProviders(data, <ServiceYearFilterListContainer />);
     data.availableYears.forEach((year) => {
       getByText(year, { exact: false });
     });
@@ -23,7 +23,7 @@ describe('ServiceYearFilterContainer', () => {
       packages: [],
       availableYears: [2023, 2024, 2025],
     };
-    const { getByText } = renderWithAllProviders(data, <ServiceYearFilterContainer />);
+    const { getByText } = renderWithAllProviders(data, <ServiceYearFilterListContainer />);
 
     const element = getByText(2023, { exact: false });
     fireEvent.click(element);

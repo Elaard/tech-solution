@@ -1,9 +1,9 @@
 import React from 'react';
 import { useServiceContext } from '../contexts/ServicesContext';
 import ServicesFilterContext from '../contexts/ServicesFilterContext';
-import ServiceFilterListContainer from '../components/ServicesFilter/ServiceFilterListContainer';
+import ServiceFilterListContainer from '../components/ServicesFilterList/ServiceFilterListContainer';
 import ServiceListContainer from '../components/ServiceList/ServiceListContainer';
-import ServiceYearFilterContainer from '../components/ServiceYearFilter/ServiceYearFilterContainer';
+import ServiceYearFilterListContainer from '../components/ServiceYearFilterList/ServiceYearFilterListContainer';
 
 export default function Home() {
   const { services } = useServiceContext();
@@ -16,7 +16,7 @@ export default function Home() {
             <ServiceFilterListContainer />
           </div>
           <div className="offer__service-per-year">
-            <ServiceYearFilterContainer />
+            <ServiceYearFilterListContainer />
           </div>
           <div className="offer__list">
             <ServiceListContainer />
