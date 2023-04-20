@@ -17,16 +17,16 @@
   &__information {
     position: relative;
     margin-right: 1rem;
-    width: 70%;
+    width: 100%;
   }
   &__pricing {
     position: relative;
-    width: 30%;
+    width: 100%;
   }
   &__service-static-name {
     position: relative;
     height: 50%;
-    margin-left: 8rem;
+    padding-left: 25%;
     font-size: 3rem;
     text-transform: uppercase;
     & > span {
@@ -36,7 +36,7 @@
   }
   &__service-name {
     height: 50%;
-    margin-left: 10rem;
+    padding-left: 30%;
     word-wrap: break-word;
     text-transform: uppercase;
   }
@@ -46,14 +46,17 @@
     height: 60%;
     text-transform: uppercase;
     & > span {
+      text-align: right;
       position: absolute;
       bottom: 10%;
+      right: 30%;
     }
   }
   &__service-price {
     font-size: 2rem;
-    margin-left: 30%;
+    padding-right: 30%;
     text-transform: uppercase;
+    text-align: right;
   }
   &__footer {
     position: absolute;
