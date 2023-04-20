@@ -20,6 +20,6 @@ export function renderWithServicesProvider(children: JSX.Element) {
   return render(getWithServicesProvider(children));
 }
 
-export function renderWithServicesAndServicesFilterProviders(services: ServiceOffer, children: JSX.Element) {
+export function renderWithAllProviders(services: ServiceOffer, children: JSX.Element) {
   return renderWithServicesProvider(getWithServicesFilterProvider(services, children));
 }
