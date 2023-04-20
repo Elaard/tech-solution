@@ -1,29 +1,13 @@
 import React from 'react';
-import { renderWithServicesAndServicesFilterProviders } from '../../testUtils/withProviders';
+import { renderWithAllProviders } from '../../testUtils/withProviders';
 import ServiceFilterListContainer from './ServiceFilterListContainer';
+import { dataServices } from '../../testUtils/data';
 import { ServiceOffer } from '../../models/Service/ServiceOffer';
 
 describe('should prepare data for filter components', () => {
   it('as above', () => {
-    const services: ServiceOffer = {
-      services: [
-        {
-          id: 'internet',
-          name: 'Internet',
-        },
-        {
-          id: 'tv',
-          name: 'Telewizja',
-        },
-        {
-          id: 'abo',
-          name: 'Abonament telefoniczny',
-        },
-        {
-          id: 'decoder4k',
-          name: 'Dekoder 4K',
-        },
-      ],
+    const data: ServiceOffer = {
+      services: dataServices,
       packages: [
         {
           id: 'internet_package',
@@ -126,10 +110,9 @@ describe('should prepare data for filter components', () => {
         },
       ],
     };
+    const { getByText } = renderWithAllProviders(data, <ServiceFilterListContainer />);
 
-    const { getByText } = renderWithServicesAndServicesFilterProviders(services, <ServiceFilterListContainer />);
-
-    services.services.forEach((service) => {
+    data.services.forEach((service) => {
       getByText(service.name);
     });
   });
