@@ -8,17 +8,20 @@
   cursor: pointer;
   text-transform: uppercase;
   padding: 0.6rem 1.4rem;
-  margin: 0 0.8rem;
+  margin: 0.8rem;
   border: 1px solid $color-light-blue;
+  flex-basis: 0;
+  flex-grow: 1;
   &:hover {
     @extend .filter-list-element--enabled;
   }
   &--enabled {
     @extend .filter-list-element--enabled;
   }
-  & > p {
+  &__text {
     position: relative;
     top: 50%;
     transform: translateY(-50%);
+    text-align: center;
   }
 }

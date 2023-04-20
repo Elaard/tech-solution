@@ -1,15 +1,13 @@
 .cart {
-  position: absolute;
-  top: 50%;
-  right: 20%;
-  transform: translateY(-50%);
-  height: 6rem;
+  position: relative;
   width: 6rem;
+  margin-left: auto;
+  text-align: center;
   &__img {
     position: absolute;
     top: 50%;
-    right: 0;
-    transform: translateY(-50%);
+    left: 60%;
+    transform: translate(-20%, -50%);
     height: 4rem;
     cursor: pointer;
     transition: all 0.3s;

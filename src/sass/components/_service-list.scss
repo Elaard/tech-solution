@@ -1,9 +1,18 @@
 .service-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  grid-column-gap: 3rem;
 }
 
 .service-list--single {
   width: 80%;
   margin: auto;
+}
+
+@media screen and (max-width: 1280px) {
+  .service-list {
+    display: block;
+    width: 100%;
+    margin: auto;
+  }
 }

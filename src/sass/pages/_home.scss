@@ -1,8 +1,3 @@
-.home-page {
-  width: 80%;
-  margin: auto;
-}
-
 .offer {
   width: 80%;
   margin: auto;
@@ -12,9 +7,9 @@
     text-transform: uppercase;
   }
   &__filter {
-    margin-top: 6vh;
+    margin: 6vh 15% 0 15%;
   }
   &__list {
-    margin: 6vh auto;
+    margin-top: 6vh;
   }
 }
