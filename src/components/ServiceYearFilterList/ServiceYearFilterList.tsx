@@ -6,7 +6,7 @@ import ServiceYearFilterListElement from './ServiceYearFilterListElement';
 interface ServiceYearFilterProps {
   setYearFilter: (year: ServiceYear) => void;
   getAvailableYears: () => ServiceAvailableYears;
-  isYearFilterEnabled: (providedYear: number) => boolean;
+  isYearEqualToFilterYear: (providedYear: number) => boolean;
 }
 
 export default function ServiceYearFilterList({ getAvailableYears, ...rest }: ServiceYearFilterProps) {

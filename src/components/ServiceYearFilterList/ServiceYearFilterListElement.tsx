@@ -4,13 +4,13 @@ import { ServiceYear } from '../../models/Service/ServiceYear';
 interface ServiceYearFilterListElementProps {
   year: ServiceYear;
   setYearFilter: (year: ServiceYear) => void;
-  isYearFilterEnabled: (providedYear: number) => boolean;
+  isYearEqualToFilterYear: (providedYear: number) => boolean;
 }
 
-export default function ServiceYearFilterListElement({ year, setYearFilter, isYearFilterEnabled }: ServiceYearFilterListElementProps) {
+export default function ServiceYearFilterListElement({ year, setYearFilter, isYearEqualToFilterYear }: ServiceYearFilterListElementProps) {
   const text = `oferta na rok ${year}`;
 
-  const className = isYearFilterEnabled(year)
+  const className = isYearEqualToFilterYear(year)
     ? 'service-year-filter-container__element service-year-filter-container__element--active'
     : 'service-year-filter-container__element';
 

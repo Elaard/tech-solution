@@ -14,7 +14,7 @@ export const dataServices: BasicService[] = [
     name: 'Abonament telefoniczny',
   },
   {
-    id: 'decoder4k',
+    id: 'dekoder4k',
     name: 'Dekoder 4K',
   },
 ];

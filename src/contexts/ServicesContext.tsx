@@ -1,11 +1,12 @@
 import React, { createContext } from 'react';
 import { useContext } from 'react';
 import { ServiceOffer } from '../models/Service/ServiceOffer';
-import { BasicService } from '../models/Service/ServiceInfo';
+import { BasicService, ServiceToOrder } from '../models/Service/ServiceInfo';
 
 export interface ServicesContext {
   services: ServiceOffer;
   getBasicServices: () => BasicService[];
+  getPackageById: (packageId: string) => ServiceToOrder | undefined;
   getBasicServiceById: (basicServiceId: string) => BasicService | undefined;
   isBasicServiceAvailableOnlyWithinPackage: (basicServiceId: string) => boolean;
 }
@@ -16,6 +17,7 @@ const ServicesProvider = createContext<ServicesContext>({
     packages: [],
     availableYears: [],
   },
+  getPackageById: () => undefined,
   getBasicServices: () => [],
   getBasicServiceById: () => undefined,
   isBasicServiceAvailableOnlyWithinPackage: () => false,
@@ -46,7 +48,7 @@ const services: ServiceOffer = {
       name: 'Abonament telefoniczny',
     },
     {
-      id: 'decoder4k',
+      id: 'dekoder4k',
       name: 'Dekoder 4K',
       availableOnlyWithPackage: true,
     },
@@ -54,7 +56,7 @@ const services: ServiceOffer = {
   packages: [
     //2023
     {
-      id: 'internet_package',
+      id: '1',
       name: 'Internet',
       year: 2023,
       price: 39,
@@ -68,7 +70,7 @@ const services: ServiceOffer = {
       ],
     },
     {
-      id: 'tv_package',
+      id: '2',
       name: 'Telewizja',
       year: 2023,
       price: 49,
@@ -82,7 +84,7 @@ const services: ServiceOffer = {
       ],
     },
     {
-      id: 'abo_package',
+      id: '3',
       name: 'Abonament',
       year: 2023,
       price: 29,
@@ -96,21 +98,21 @@ const services: ServiceOffer = {
       ],
     },
     {
-      id: 'decoder_package',
+      id: '4',
       name: 'Decoder 4k',
       year: 2023,
       price: 29,
-      description: 'decoder',
+      description: 'dekoder',
       includedServices: [
         {
-          id: 'decoder4k',
+          id: 'dekoder4k',
           price: 0,
-          description: 'decoder4k za prawie darmo',
+          description: 'dekoder4k za prawie darmo',
         },
       ],
     },
     {
-      id: 'internet&tv_package',
+      id: '5',
       name: 'Internet + telewizja',
       year: 2023,
       price: 79,
@@ -127,14 +129,14 @@ const services: ServiceOffer = {
           description: 'tv za prawie darmo',
         },
         {
-          id: 'decoder4k',
+          id: 'dekoder4k',
           price: 0,
-          description: 'decoder4k za prawie darmo',
+          description: 'dekoder4k za prawie darmo',
         },
       ],
     },
     {
-      id: 'internet&abo_package',
+      id: '6',
       name: 'Internet + Abonament telefoniczny',
       year: 2023,
       price: 64,
@@ -154,7 +156,7 @@ const services: ServiceOffer = {
     },
     //2024
     {
-      id: 'internet_package',
+      id: '7',
       name: 'Internet',
       year: 2024,
       price: 49,
@@ -168,7 +170,7 @@ const services: ServiceOffer = {
       ],
     },
     {
-      id: 'tv_package',
+      id: '8',
       name: 'Telewizja',
       year: 2024,
       price: 49,
@@ -182,7 +184,7 @@ const services: ServiceOffer = {
       ],
     },
     {
-      id: 'abo_package',
+      id: '9',
       name: 'Abonament',
       year: 2024,
       price: 29,
@@ -196,21 +198,21 @@ const services: ServiceOffer = {
       ],
     },
     {
-      id: 'decoder_package',
+      id: '10',
       name: 'Decoder 4k',
       year: 2024,
       price: 29,
-      description: 'decoder',
+      description: 'dekoder',
       includedServices: [
         {
-          id: 'decoder4k',
+          id: 'dekoder4k',
           price: 0,
-          description: 'decoder4k za prawie darmo',
+          description: 'dekoder4k za prawie darmo',
         },
       ],
     },
     {
-      id: 'internet&tv_package',
+      id: '11',
       name: 'Internet + telewizja',
       year: 2024,
       price: 89,
@@ -227,14 +229,14 @@ const services: ServiceOffer = {
           description: 'tv za prawie darmo',
         },
         {
-          id: 'decoder4k',
+          id: 'dekoder4k',
           price: 0,
-          description: 'decoder4k za prawie darmo',
+          description: 'dekoder4k za prawie darmo',
         },
       ],
     },
     {
-      id: 'internet&abo_package',
+      id: '12',
       name: 'Internet + Abonament telefoniczny',
       year: 2024,
       price: 64,
@@ -254,7 +256,7 @@ const services: ServiceOffer = {
     },
     //2025
     {
-      id: 'internet_package',
+      id: '13',
       name: 'Internet',
       year: 2025,
       price: 59,
@@ -268,7 +270,7 @@ const services: ServiceOffer = {
       ],
     },
     {
-      id: 'tv_package',
+      id: '14',
       name: 'Telewizja',
       year: 2025,
       price: 59,
@@ -282,7 +284,7 @@ const services: ServiceOffer = {
       ],
     },
     {
-      id: 'abo_package',
+      id: '15',
       name: 'Abonament',
       year: 2025,
       price: 29,
@@ -296,21 +298,21 @@ const services: ServiceOffer = {
       ],
     },
     {
-      id: 'decoder_package',
+      id: '16',
       name: 'Decoder 4k',
       year: 2025,
       price: 29,
-      description: 'decoder',
+      description: 'dekoder',
       includedServices: [
         {
-          id: 'decoder4k',
+          id: 'dekoder4k',
           price: 0,
-          description: 'decoder4k za prawie darmo',
+          description: 'dekoder4k za prawie darmo',
         },
       ],
     },
     {
-      id: 'internet&tv_package',
+      id: '17',
       name: 'Internet + telewizja',
       year: 2025,
       price: 99,
@@ -327,14 +329,14 @@ const services: ServiceOffer = {
           description: 'tv za prawie darmo',
         },
         {
-          id: 'decoder4k',
+          id: 'dekoder4k',
           price: 0,
-          description: 'decoder4k za prawie darmo',
+          description: 'dekoder4k za prawie darmo',
         },
       ],
     },
     {
-      id: 'internet&abo_package',
+      id: '18',
       name: 'Internet + Abonament telefoniczny',
       year: 2025,
       price: 64,
@@ -357,17 +359,21 @@ const services: ServiceOffer = {
 };
 
 const ServicesContext = ({ children }: ServicesContextProps) => {
-  const getBasicServices = () => {
-    return services.services;
-  };
+  const getBasicServices = () => services.services;
+
+  const getPackages = () => services.packages;
+
   const getBasicServiceById = (basicServiceId: string) => {
     return getBasicServices().find(({ id }) => id === basicServiceId);
   };
   const isBasicServiceAvailableOnlyWithinPackage = (basicServiceId: string): boolean => {
     return !!getBasicServiceById(basicServiceId)?.availableOnlyWithPackage;
   };
+  const getPackageById = (packageId: string) => {
+    return getPackages().find((pack) => pack.id === packageId);
+  };
   return (
-    <ServicesProvider.Provider value={{ services, getBasicServices, getBasicServiceById, isBasicServiceAvailableOnlyWithinPackage }}>
+    <ServicesProvider.Provider value={{ services, getBasicServices, getPackageById, getBasicServiceById, isBasicServiceAvailableOnlyWithinPackage }}>
       {children}
     </ServicesProvider.Provider>
   );

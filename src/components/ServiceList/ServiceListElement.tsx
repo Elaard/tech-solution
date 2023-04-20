@@ -1,7 +1,7 @@
 import React from 'react';
 import { ServiceInfoVM } from '../../models/Shared/ServiceInfoVM';
 import IncludedServiceList from './IncludedServiceList';
-import ServiceListActions from './ServiceListActions';
+import ServiceListActionsFactory from './ServiceListActionsFactory';
 
 interface ServiceListElementProps {
   service: ServiceInfoVM;
@@ -28,7 +28,7 @@ export default function ServiceListElement({ service }: ServiceListElementProps)
         <IncludedServiceList includedServices={service.includedServices} />
       </div>
       <div className="service-list-element__footer">
-        <ServiceListActions service={service} />
+        <ServiceListActionsFactory service={service} />
       </div>
     </li>
   );

@@ -9,7 +9,7 @@ export interface ServicesFilterContext {
   addFilter: (filterId: string) => void;
   removeFilter: (filterId: string) => void;
   setYearFilter: (year: ServiceYear) => void;
-  isYearFilterEnabled: (providedYear: ServiceYear) => boolean;
+  isYearEqualToFilterYear: (providedYear: ServiceYear) => boolean;
   isIncludedServiceFilterEnabled: (filterId: string) => boolean;
   getAvailableYears: () => ServiceAvailableYears;
   getFilteredServices: () => ServiceToOrder[];
@@ -19,7 +19,7 @@ const ServicesFilterProvider = createContext<ServicesFilterContext>({
   addFilter: () => null,
   removeFilter: () => null,
   setYearFilter: () => null,
-  isYearFilterEnabled: () => false,
+  isYearEqualToFilterYear: () => false,
   isIncludedServiceFilterEnabled: () => false,
   getAvailableYears: () => [],
   getFilteredServices: () => [],
@@ -77,7 +77,7 @@ const ServicesFilterContext = ({ children, services }: ServicesFilterContextProp
 
   const setYearFilter = (providedYear: ServiceYear) => setYear(providedYear);
 
-  const isYearFilterEnabled = (providedYear: ServiceYear) => providedYear === year;
+  const isYearEqualToFilterYear = (providedYear: ServiceYear) => providedYear === year;
 
   return (
     <ServicesFilterProvider.Provider
@@ -86,7 +86,7 @@ const ServicesFilterContext = ({ children, services }: ServicesFilterContextProp
         removeFilter,
         setYearFilter,
         getFilteredServices,
-        isYearFilterEnabled,
+        isYearEqualToFilterYear,
         getAvailableYears,
         isIncludedServiceFilterEnabled,
       }}
