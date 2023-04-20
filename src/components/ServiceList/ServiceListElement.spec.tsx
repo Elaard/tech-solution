@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { ServiceInfoVM } from '../../models/ViewModels/ServiceInfoVM';
+import { ServiceInfoVM } from '../../models/Shared/ServiceInfoVM';
 import ServiceListElement from './ServiceListElement';
 
 describe('ServiceListElement', () => {

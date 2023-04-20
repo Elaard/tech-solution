@@ -1,5 +1,5 @@
 import React from 'react';
-import { ServiceInfoVM } from '../../models/ViewModels/ServiceInfoVM';
+import { ServiceInfoVM } from '../../models/Shared/ServiceInfoVM';
 import ServiceActionAlternativeText from './ServiceActionAlternativeText';
 import ServiceButton from './ServiceButton';
 

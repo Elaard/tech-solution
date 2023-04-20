@@ -1,6 +1,6 @@
 import React from 'react';
 import ServiceListElement from './ServiceListElement';
-import { ServiceInfoVM } from '../../models/ViewModels/ServiceInfoVM';
+import { ServiceInfoVM } from '../../models/Shared/ServiceInfoVM';
 
 interface ServiceListProps {
   services: ServiceInfoVM[];

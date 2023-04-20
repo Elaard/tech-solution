@@ -2,7 +2,7 @@ import React from 'react';
 import { useServiceFilterContext } from '../../contexts/ServicesFilterContext';
 import ServiceList from './ServiceList';
 import { useServiceContext } from '../../contexts/ServicesContext';
-import { ServiceInfoVM } from '../../models/ViewModels/ServiceInfoVM';
+import { ServiceInfoVM } from '../../models/Shared/ServiceInfoVM';
 import { AdditionalService } from '../../models/Service/ServiceInfo';
 
 export default function ServiceListContainer() {
