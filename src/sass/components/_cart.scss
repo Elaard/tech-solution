@@ -1,28 +1,12 @@
 .cart {
-  position: relative;
   width: 6rem;
+  line-height: 12rem;
   margin-left: auto;
   text-align: center;
   &__img {
-    position: absolute;
-    top: 50%;
-    left: 60%;
-    transform: translate(-20%, -50%);
+    display: inline-block;
     height: 4rem;
     cursor: pointer;
-    transition: all 0.3s;
-    &:hover {
-      scale: 1.1;
-      transform: translateY(calc(-50% + 0.3rem));
-    }
-  }
-  &__quantity {
-    position: absolute;
-    top: 60%;
-    left: 80%;
-    font-size: 3rem;
-    width: 2rem;
-    color: white;
-    text-align: center;
+    margin-top: calc(6rem - 2rem);
   }
 }

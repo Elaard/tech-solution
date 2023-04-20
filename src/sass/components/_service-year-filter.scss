@@ -1,0 +1,22 @@
+.service-year-filter-container {
+  display: flex;
+  margin-top: 5vh;
+  font-size: 1.6rem;
+  &__element {
+    text-transform: uppercase;
+    cursor: pointer;
+    font-weight: bold;
+    border: 2px solid transparent;
+    padding-bottom: 4px;
+    &:not(:first-child) {
+      margin-left: 4vw;
+    }
+    &:hover {
+      color: $color-light-blue;
+    }
+    &--active {
+      color: $color-light-blue;
+      border-bottom: 2px solid $color-light-blue;
+    }
+  }
+}
