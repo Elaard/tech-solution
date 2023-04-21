@@ -1,0 +1,43 @@
+.order-list {
+}
+
+.order-list-element {
+  position: relative;
+  padding: 8rem 0;
+  margin: 0 6vw;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.order-list-element-description {
+  display: flex;
+  &__service {
+    flex-basis: 0;
+    flex-grow: 1;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+  }
+  &__container {
+  }
+  &__service-name {
+  }
+  &__service-year {
+    font-size: 1.4rem;
+    margin-top: 4px;
+    color: $color-light-pink;
+  }
+  &__included-services {
+    flex-basis: 0;
+    flex-grow: 1;
+  }
+}
+
+.order-list-element-footer {
+  position: absolute;
+  bottom: 10%;
+  right: 2%;
+  text-align: right;
+  margin-top: 2rem;
+  & > * {
+    margin-right: 6px;
+  }
+}

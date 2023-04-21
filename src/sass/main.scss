@@ -16,5 +16,11 @@
 @import 'components/included-service-list.scss';
 @import 'components/filter-list-element.scss';
 @import 'components/service-year-filter.scss';
+@import 'components/_order-body.scss';
+@import 'components/order-header.scss';
+@import 'components/order-list.scss';
+@import 'components/service-alternative-text.scss';
+@import 'components/order-footer.scss';
 
-@import 'pages/home';
+@import 'pages/home-page';
+@import 'pages/order-page';

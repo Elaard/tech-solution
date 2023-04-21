@@ -1,0 +1,14 @@
+.order-header {
+  margin: auto;
+  margin-top: 6vh;
+  width: 80%;
+  height: 4rem;
+  &__element {
+    font-size: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: $color-light-blue;
+    padding-bottom: 8px;
+    border-bottom: 2px solid $color-light-blue;
+  }
+}

@@ -1,0 +1,11 @@
+.order-footer {
+  padding: 0 2rem 6rem;
+  text-align: right;
+  &__summary {
+    font-size: 2rem;
+    text-transform: uppercase;
+  }
+  &__currency {
+    text-transform: lowercase;
+  }
+}
