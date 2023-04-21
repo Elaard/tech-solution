@@ -1,13 +1,15 @@
 import React, { createContext } from 'react';
 import { useContext } from 'react';
 import { ServiceOffer } from '../models/Service/ServiceOffer';
-import { BasicService, ServiceToOrder } from '../models/Service/ServiceInfo';
+import { AdditionalService, BasicService, ServiceToOrder } from '../models/Service/ServiceInfo';
+import { ServiceInfoVM } from '../models/Shared/ServiceInfoVM';
 
 export interface ServicesContext {
   services: ServiceOffer;
   getBasicServices: () => BasicService[];
   getPackageById: (packageId: string) => ServiceToOrder | undefined;
   getBasicServiceById: (basicServiceId: string) => BasicService | undefined;
+  getServicesToDisplay: (packages: ServiceToOrder[]) => ServiceInfoVM[];
   isBasicServiceAvailableOnlyWithinPackage: (basicServiceId: string) => boolean;
 }
 
@@ -20,6 +22,7 @@ const ServicesProvider = createContext<ServicesContext>({
   getPackageById: () => undefined,
   getBasicServices: () => [],
   getBasicServiceById: () => undefined,
+  getServicesToDisplay: () => [],
   isBasicServiceAvailableOnlyWithinPackage: () => false,
 });
 
@@ -372,8 +375,28 @@ const ServicesContext = ({ children }: ServicesContextProps) => {
   const getPackageById = (packageId: string) => {
     return getPackages().find((pack) => pack.id === packageId);
   };
+  const isServiceAvailableOnlyWithinPackage = (includedServices: AdditionalService[]) => {
+    if (includedServices.length !== 1) {
+      return false;
+    }
+    return isBasicServiceAvailableOnlyWithinPackage(includedServices[0].id);
+  };
+  const getServicesToDisplay = (packages: ServiceToOrder[]): ServiceInfoVM[] => {
+    return packages.map((service) => {
+      return {
+        ...service,
+        availableOnlyWithPackage: isServiceAvailableOnlyWithinPackage(service.includedServices),
+        includedServices: service.includedServices.map((includeService) => ({
+          ...includeService,
+          name: getBasicServiceById(includeService.id)?.name ?? '',
+        })),
+      };
+    });
+  };
   return (
-    <ServicesProvider.Provider value={{ services, getBasicServices, getPackageById, getBasicServiceById, isBasicServiceAvailableOnlyWithinPackage }}>
+    <ServicesProvider.Provider
+      value={{ services, getBasicServices, getPackageById, getBasicServiceById, getServicesToDisplay, isBasicServiceAvailableOnlyWithinPackage }}
+    >
       {children}
     </ServicesProvider.Provider>
   );

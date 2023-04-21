@@ -1,3 +1,5 @@
+import { ServiceId } from '../Service/ServiceId';
+
 export interface IdObject {
-  id: string;
+  id: ServiceId;
 }

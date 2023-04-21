@@ -1,16 +1,11 @@
 import React from 'react';
-import { useCartContext } from '../../contexts/CartContext';
 
 interface ServiceButtonProps {
   title: string;
-  serviceId: string;
+  onClick: () => void;
 }
 
-export default function ServiceButton({ title, serviceId }: ServiceButtonProps) {
-  const { addItemToCart } = useCartContext();
-  const onClick = () => {
-    addItemToCart(serviceId);
-  };
+export default function ServiceButton({ title, onClick }: ServiceButtonProps) {
   return (
     <button className="service-btn" onClick={onClick}>
       {title}

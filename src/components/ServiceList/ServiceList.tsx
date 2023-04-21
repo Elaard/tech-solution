@@ -8,7 +8,9 @@ interface ServiceListProps {
 
 export default function ServiceList({ services }: ServiceListProps) {
   const shouldBeCentered = services.length > 1;
+
   const className = shouldBeCentered ? 'service-list' : 'service-list--single ';
+
   return (
     <ul className={className}>
       {services.map((service) => (

@@ -38,13 +38,14 @@ describe('ServiceListContainer', () => {
           ],
         },
       ],
+      availableYears: [2023],
     };
     const { queryAllByText } = renderWithAllProviders(data, <ServiceListContainer />);
 
     expect(queryAllByText('internet', { exact: false })).toHaveLength(2);
     expect(queryAllByText('telewizja', { exact: false })).toHaveLength(2);
   });
-  it('should find service buyable only withing package aswell', () => {
+  it('should find service buyable only within package aswell', () => {
     const data: ServiceOffer = {
       services: dataServices,
       packages: [
@@ -63,6 +64,7 @@ describe('ServiceListContainer', () => {
           ],
         },
       ],
+      availableYears: [2023],
     };
     const { queryAllByText } = renderWithAllProviders(data, <ServiceListContainer />);
 
@@ -87,9 +89,20 @@ describe('ServiceListContainer', () => {
           ],
         },
       ],
+      availableYears: [2023],
     };
     const { getByText } = renderWithAllProviders(data, <ServiceListContainer />);
 
     getByText('Usługa dostępna tylko w pakiecie', { exact: false });
+  });
+  it('should display alternative message', () => {
+    const data: ServiceOffer = {
+      services: dataServices,
+      packages: [],
+      availableYears: [],
+    };
+    const { getByText } = renderWithAllProviders(data, <ServiceListContainer />);
+
+    getByText('aktualnie w naszej ofercie nie ma pakietow z szukanymi uslugami', { exact: false });
   });
 });
