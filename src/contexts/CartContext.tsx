@@ -56,7 +56,7 @@ const CartContext = ({ children }: CartContextProps) => {
   const removeItemFromCart = (combo: ComboInformation) =>
     setCart((prev) => {
       const comboServices = extractIds(combo.includedServices);
-      return prev.filter((cartItem) => !comboServices.includes(cartItem.id));
+      return prev.filter((cartItem) => !(comboServices.includes(cartItem.id) && cartItem.year === combo.year));
     });
 
   const doesCartContainItems = () => Boolean(cart.length);
