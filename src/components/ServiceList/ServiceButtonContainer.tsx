@@ -1,7 +1,7 @@
 import React from 'react';
 import { useCartContext } from '../../contexts/CartContext';
 import ServiceButton from './ServiceButton';
-import { ComboInformation } from '../../models/Shared/ServiceInfoVM';
+import { ComboInformation } from '../../models/Service/ComboInformation';
 
 interface ServiceButtonContainerProps {
   title: string;

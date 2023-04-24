@@ -1,6 +1,6 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { ComboInformation } from '../../models/Shared/ServiceInfoVM';
+import { ComboInformation } from '../../models/Service/ComboInformation';
 import ServiceListElement from './ServiceListElement';
 
 describe('ServiceListElement', () => {

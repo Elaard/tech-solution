@@ -1,5 +1,5 @@
 import React from 'react';
-import { ComboInformation } from '../../models/Shared/ServiceInfoVM';
+import { ComboInformation } from '../../models/Service/ComboInformation';
 
 import OrderIncludedServiceElement from './OrderIncludedServiceElement';
 import OrderRemoveButtonContainer from './OrderRemoveButtonContainer';

@@ -2,7 +2,7 @@ import React, { createContext } from 'react';
 import { useContext } from 'react';
 import { ServiceOffer } from '../models/Service/ServiceOffer';
 import { ComboIncludedServices, Combo } from '../models/Service/Combo';
-import { ComboInformation } from '../models/Shared/ServiceInfoVM';
+import { ComboInformation } from '../models/Service/ComboInformation';
 import { ServiceYear } from '../models/Service/ServiceYear';
 import { ServiceId } from '../models/Service/ServiceId';
 import { Service } from '../models/Service/Service';

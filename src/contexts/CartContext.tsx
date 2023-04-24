@@ -2,7 +2,7 @@ import React, { createContext, useState } from 'react';
 import { useContext } from 'react';
 import { CartItem } from '../models/Shared/CartItem';
 import { ServiceId } from '../models/Service/ServiceId';
-import { IncludedServicesVM, ComboInformation } from '../models/Shared/ServiceInfoVM';
+import { IncludedServicesVM, ComboInformation } from '../models/Service/ComboInformation';
 import { useServiceContext } from './ServicesContext';
 import { extractIds, removeDuplicates } from '../utils/arrayUtils';
 import { Combo } from '../models/Service/Combo';

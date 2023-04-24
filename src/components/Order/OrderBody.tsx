@@ -1,6 +1,6 @@
 import React from 'react';
 import OrderList from './OrderList';
-import { ComboInformation } from '../../models/Shared/ServiceInfoVM';
+import { ComboInformation } from '../../models/Service/ComboInformation';
 
 interface OrderBodyProps {
   cartItems: ComboInformation[];

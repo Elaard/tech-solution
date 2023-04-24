@@ -1,7 +1,7 @@
-import { Service } from '../Service/Service';
-import { ServiceId } from '../Service/ServiceId';
-import { ServicePrice } from '../Service/ServicePrice';
-import { ServiceYear } from '../Service/ServiceYear';
+import { Service } from './Service';
+import { ServiceId } from './ServiceId';
+import { ServicePrice } from './ServicePrice';
+import { ServiceYear } from './ServiceYear';
 
 export interface IncludedServicesVM extends Service {
   description: string;

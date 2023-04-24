@@ -1,5 +1,5 @@
 import React from 'react';
-import { IncludedServicesVM } from '../../models/Shared/ServiceInfoVM';
+import { IncludedServicesVM } from '../../models/Service/ComboInformation';
 
 interface IncludedServiceListElementInfo {
   includedService: IncludedServicesVM;
