@@ -371,9 +371,7 @@ const services: ServiceOffer = {
 
 const ServicesContext = ({ children }: ServicesContextProps) => {
   const getBasicServices = () => services.services;
-
   const getComboServices = () => services.comboServices;
-
   const getBasicServiceById = (serviceId: ServiceId) => {
     return getBasicServices().find(({ id }) => id === serviceId);
   };
@@ -390,6 +388,7 @@ const ServicesContext = ({ children }: ServicesContextProps) => {
     }
     return isBasicServiceAvailableOnlyWithinCombo(includedServices[0].id);
   };
+
   const getComboServicesInformation = (comboServices: Combo[]): ComboInformation[] => {
     return comboServices.map((service) => {
       return {

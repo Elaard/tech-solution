@@ -1,6 +1,6 @@
 import React from 'react';
 import { dataServices } from '../../testUtils/data';
-import { renderWithAllProviders } from '../../testUtils/withProviders';
+import { renderWithProviders } from '../../testUtils/withProviders';
 import ServiceListContainer from './ServiceListContainer';
 import { ServiceOffer } from '../../models/Service/ServiceOffer';
 
@@ -40,7 +40,7 @@ describe('ServiceListContainer', () => {
       ],
       availableYears: [2023],
     };
-    const { queryAllByText } = renderWithAllProviders(data, <ServiceListContainer />);
+    const { queryAllByText } = renderWithProviders(data, <ServiceListContainer />);
 
     expect(queryAllByText('internet', { exact: false })).toHaveLength(2);
     expect(queryAllByText('telewizja', { exact: false })).toHaveLength(2);
@@ -66,7 +66,7 @@ describe('ServiceListContainer', () => {
       ],
       availableYears: [2023],
     };
-    const { queryAllByText } = renderWithAllProviders(data, <ServiceListContainer />);
+    const { queryAllByText } = renderWithProviders(data, <ServiceListContainer />);
 
     expect(queryAllByText('Dekoder 4k', { exact: false })).toHaveLength(2);
   });
@@ -91,7 +91,7 @@ describe('ServiceListContainer', () => {
       ],
       availableYears: [2023],
     };
-    const { getByText } = renderWithAllProviders(data, <ServiceListContainer />);
+    const { getByText } = renderWithProviders(data, <ServiceListContainer />);
 
     getByText('Usługa dostępna tylko w pakiecie', { exact: false });
   });
@@ -101,7 +101,7 @@ describe('ServiceListContainer', () => {
       comboServices: [],
       availableYears: [],
     };
-    const { getByText } = renderWithAllProviders(data, <ServiceListContainer />);
+    const { getByText } = renderWithProviders(data, <ServiceListContainer />);
 
     getByText('aktualnie w naszej ofercie nie ma pakietow z szukanymi uslugami', { exact: false });
   });

@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderWithAllProviders } from '../../testUtils/withProviders';
+import { renderWithProviders } from '../../testUtils/withProviders';
 import ServiceFilterListContainer from './ServiceFilterListContainer';
 import { dataServices } from '../../testUtils/data';
 import { ServiceOffer } from '../../models/Service/ServiceOffer';
@@ -111,7 +111,7 @@ describe('should prepare data for filter components', () => {
       ],
       availableYears: [],
     };
-    const { getByText } = renderWithAllProviders(data, <ServiceFilterListContainer />);
+    const { getByText } = renderWithProviders(data, <ServiceFilterListContainer />);
 
     data.services.forEach((service) => {
       getByText(service.name);

@@ -1,5 +1,5 @@
 import React from 'react';
-import { renderWithAllProviders } from '../../testUtils/withProviders';
+import { renderWithProviders } from '../../testUtils/withProviders';
 import ServiceYearFilterListContainer from './ServiceYearFilterListContainer';
 import { ServiceOffer } from '../../models/Service/ServiceOffer';
 import { dataServices } from '../../testUtils/data';
@@ -12,7 +12,7 @@ describe('ServiceYearFilterContainer', () => {
       comboServices: [],
       availableYears: [2023, 2024, 2025],
     };
-    const { getByText } = renderWithAllProviders(data, <ServiceYearFilterListContainer />);
+    const { getByText } = renderWithProviders(data, <ServiceYearFilterListContainer />);
     data.availableYears.forEach((year) => {
       getByText(year, { exact: false });
     });
@@ -23,7 +23,7 @@ describe('ServiceYearFilterContainer', () => {
       comboServices: [],
       availableYears: [2023, 2024, 2025],
     };
-    const { getByText } = renderWithAllProviders(data, <ServiceYearFilterListContainer />);
+    const { getByText } = renderWithProviders(data, <ServiceYearFilterListContainer />);
 
     const element = getByText(2023, { exact: false });
     fireEvent.click(element);
