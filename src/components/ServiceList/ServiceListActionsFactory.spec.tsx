@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { ServiceInfoVM } from '../../models/Shared/ServiceInfoVM';
+import { ComboInformation } from '../../models/Shared/ServiceInfoVM';
 import ServiceListActionsFactory from './ServiceListActionsFactory';
 
 describe('ServiceListActionsFactory', () => {
   it('should find message as expected', () => {
-    const service: ServiceInfoVM = {
+    const service: ComboInformation = {
       id: 'tv',
       description: '',
       name: 'television',
@@ -19,7 +19,7 @@ describe('ServiceListActionsFactory', () => {
     getByText('usługa dostępna tylko w pakiecie', { exact: false });
   });
   it('should find button', () => {
-    const service: ServiceInfoVM = {
+    const service: ComboInformation = {
       id: 'tv',
       description: '',
       name: 'television',
@@ -33,7 +33,7 @@ describe('ServiceListActionsFactory', () => {
     getByRole('button');
   });
   it('button should have text as expected', () => {
-    const service: ServiceInfoVM = {
+    const service: ComboInformation = {
       id: 'tv',
       description: '',
       name: 'television',

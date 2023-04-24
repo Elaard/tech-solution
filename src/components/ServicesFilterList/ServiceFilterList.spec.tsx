@@ -1,7 +1,7 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { ServiceAsFilter } from '../../models/Service/ServiceAsFilter';
 import ServiceFilterList from './ServiceFilterList';
+import { ServiceAsFilter } from './Models/ServiceAsFilter';
 
 describe('should return list of services', () => {
   it('as above', () => {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ServiceAsFilter } from '../../models/Service/ServiceAsFilter';
+import { ServiceAsFilter } from './Models/ServiceAsFilter';
 
 interface ServiceListElementProps {
   service: ServiceAsFilter;

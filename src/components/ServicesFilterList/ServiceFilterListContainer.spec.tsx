@@ -8,7 +8,7 @@ describe('should prepare data for filter components', () => {
   it('as above', () => {
     const data: ServiceOffer = {
       services: dataServices,
-      packages: [
+      comboServices: [
         {
           id: 'internet_package',
           name: 'Internet',

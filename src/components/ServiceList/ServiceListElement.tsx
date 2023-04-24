@@ -1,10 +1,10 @@
 import React from 'react';
-import { ServiceInfoVM } from '../../models/Shared/ServiceInfoVM';
+import { ComboInformation } from '../../models/Shared/ServiceInfoVM';
 import IncludedServiceList from './IncludedServiceList';
 import ServiceListActionsFactory from './ServiceListActionsFactory';
 
 interface ServiceListElementProps {
-  service: ServiceInfoVM;
+  service: ComboInformation;
 }
 
 export default function ServiceListElement({ service }: ServiceListElementProps) {

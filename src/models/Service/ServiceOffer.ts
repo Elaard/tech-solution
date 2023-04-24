@@ -1,8 +1,9 @@
-import { ServiceAvailableYears } from './ServiceAvailableYears';
-import { BasicService, ServiceToOrder } from './ServiceInfo';
+import { Combo } from './Combo';
+import { Service } from './Service';
+import { ServiceYear } from './ServiceYear';
 
 export interface ServiceOffer {
-  services: BasicService[];
-  packages: ServiceToOrder[];
-  availableYears: ServiceAvailableYears;
+  services: Service[];
+  comboServices: Combo[];
+  availableYears: ServiceYear[];
 }

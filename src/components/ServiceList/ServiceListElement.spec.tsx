@@ -1,11 +1,11 @@
 import React from 'react';
 import { render } from '@testing-library/react';
-import { ServiceInfoVM } from '../../models/Shared/ServiceInfoVM';
+import { ComboInformation } from '../../models/Shared/ServiceInfoVM';
 import ServiceListElement from './ServiceListElement';
 
 describe('ServiceListElement', () => {
   it('should display static name: "pakiet"', () => {
-    const service: ServiceInfoVM = {
+    const service: ComboInformation = {
       id: 'tv',
       description: '',
       name: 'television',
@@ -18,8 +18,8 @@ describe('ServiceListElement', () => {
 
     getByText('pakiet', { exact: false });
   });
-  it('should display name of package', () => {
-    const service: ServiceInfoVM = {
+  it('should display name of combo order', () => {
+    const service: ComboInformation = {
       id: 'tv',
       description: '',
       name: 'television',
@@ -34,7 +34,7 @@ describe('ServiceListElement', () => {
     getByText('television', { exact: false });
   });
   it('should display static name: "cena"', () => {
-    const service: ServiceInfoVM = {
+    const service: ComboInformation = {
       id: 'tv',
       description: '',
       name: 'television',
@@ -48,8 +48,8 @@ describe('ServiceListElement', () => {
 
     getByText('cena', { exact: false });
   });
-  it('should display price of package', () => {
-    const service: ServiceInfoVM = {
+  it('should display price of combo order', () => {
+    const service: ComboInformation = {
       id: 'tv',
       description: '',
       name: 'television',

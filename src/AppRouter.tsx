@@ -8,7 +8,7 @@ import ServicesContext from './contexts/ServicesContext';
 import CartContext from './contexts/CartContext';
 import OrderPage from './pages/OrderPage';
 
-const router = createBrowserRouter([
+export const router = createBrowserRouter([
   {
     element: <Layout />,
     errorElement: <ErrorPage />,

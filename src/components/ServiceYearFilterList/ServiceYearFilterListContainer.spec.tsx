@@ -9,7 +9,7 @@ describe('ServiceYearFilterContainer', () => {
   it('should find provided years', () => {
     const data: ServiceOffer = {
       services: dataServices,
-      packages: [],
+      comboServices: [],
       availableYears: [2023, 2024, 2025],
     };
     const { getByText } = renderWithAllProviders(data, <ServiceYearFilterListContainer />);
@@ -20,7 +20,7 @@ describe('ServiceYearFilterContainer', () => {
   it('after selecting year, element should get addtional class', () => {
     const data: ServiceOffer = {
       services: dataServices,
-      packages: [],
+      comboServices: [],
       availableYears: [2023, 2024, 2025],
     };
     const { getByText } = renderWithAllProviders(data, <ServiceYearFilterListContainer />);

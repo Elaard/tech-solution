@@ -1,8 +1,8 @@
 import React from 'react';
-import { AdditionalServiceVM } from '../../models/Shared/ServiceInfoVM';
+import { IncludedServicesVM } from '../../models/Shared/ServiceInfoVM';
 
 interface IncludedServiceListElementInfo {
-  includedService: AdditionalServiceVM;
+  includedService: IncludedServicesVM;
 }
 
 export default function IncludedServiceListElementInfo({ includedService }: IncludedServiceListElementInfo) {

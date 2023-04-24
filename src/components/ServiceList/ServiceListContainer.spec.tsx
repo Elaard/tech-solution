@@ -8,7 +8,7 @@ describe('ServiceListContainer', () => {
   it('should prepare data for display', () => {
     const data: ServiceOffer = {
       services: dataServices,
-      packages: [
+      comboServices: [
         {
           id: 'internet_package',
           name: 'Internet',
@@ -45,10 +45,10 @@ describe('ServiceListContainer', () => {
     expect(queryAllByText('internet', { exact: false })).toHaveLength(2);
     expect(queryAllByText('telewizja', { exact: false })).toHaveLength(2);
   });
-  it('should find service buyable only within package aswell', () => {
+  it('should find service buyable only within combo order aswell', () => {
     const data: ServiceOffer = {
       services: dataServices,
-      packages: [
+      comboServices: [
         {
           id: 'dekoder_package',
           name: 'Dekoder 4k',
@@ -70,10 +70,10 @@ describe('ServiceListContainer', () => {
 
     expect(queryAllByText('Dekoder 4k', { exact: false })).toHaveLength(2);
   });
-  it('service buyable only withing package should have proper information instead of button', () => {
+  it('service buyable only withing combo order should have proper information instead of button', () => {
     const data: ServiceOffer = {
       services: dataServices,
-      packages: [
+      comboServices: [
         {
           id: 'dekoder_package',
           name: 'Dekoder 4k',
@@ -98,7 +98,7 @@ describe('ServiceListContainer', () => {
   it('should display alternative message', () => {
     const data: ServiceOffer = {
       services: dataServices,
-      packages: [],
+      comboServices: [],
       availableYears: [],
     };
     const { getByText } = renderWithAllProviders(data, <ServiceListContainer />);

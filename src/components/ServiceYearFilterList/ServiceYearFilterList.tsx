@@ -1,11 +1,10 @@
 import React from 'react';
 import { ServiceYear } from '../../models/Service/ServiceYear';
-import { ServiceAvailableYears } from '../../models/Service/ServiceAvailableYears';
 import ServiceYearFilterListElement from './ServiceYearFilterListElement';
 
 interface ServiceYearFilterProps {
   setYearFilter: (year: ServiceYear) => void;
-  getAvailableYears: () => ServiceAvailableYears;
+  getAvailableYears: () => ServiceYear[];
   isYearEqualToFilterYear: (providedYear: number) => boolean;
 }
 

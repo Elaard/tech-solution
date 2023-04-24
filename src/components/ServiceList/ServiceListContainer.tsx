@@ -5,12 +5,12 @@ import { useServiceContext } from '../../contexts/ServicesContext';
 import ServiceListAlternativeText from './ServiceListAlternativeText';
 
 export default function ServiceListContainer() {
-  const { getServicesToDisplay } = useServiceContext();
-  const { getFilteredServices } = useServiceFilterContext();
+  const { getComboServicesInformation } = useServiceContext();
+  const { getFilteredComboOrders } = useServiceFilterContext();
 
-  const services = getFilteredServices();
+  const comboOrders = getFilteredComboOrders();
 
-  const servicesToDisplay = getServicesToDisplay(services);
+  const servicesToDisplay = getComboServicesInformation(comboOrders);
 
   const isAnyServiceAvailable = !!servicesToDisplay.length;
 

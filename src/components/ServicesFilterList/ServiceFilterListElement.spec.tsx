@@ -1,7 +1,7 @@
 import React from 'react';
 import { fireEvent, render } from '@testing-library/react';
 import ServiceFilterListElement from './ServiceFilterListElement';
-import { ServiceAsFilter } from '../../models/Service/ServiceAsFilter';
+import { ServiceAsFilter } from './Models/ServiceAsFilter';
 
 describe('should display service name', () => {
   it('as above', () => {
@@ -67,20 +67,20 @@ describe('should have proper class name based on service.isEnabled property', ()
     const addFilter = jest.fn();
     const removeFilter = jest.fn();
     const service: ServiceAsFilter = { id: 'tv', isEnabled: false, name: 'Television' };
-    const { getByText } = render(<ServiceFilterListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
+    const { getByRole } = render(<ServiceFilterListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
 
-    const element = getByText(service.name);
+    const element = getByRole('listitem');
 
-    expect(element).toHaveClass('service-filter-list__element', { exact: true });
+    expect(element).toHaveClass('filter-list-element', { exact: true });
   });
   it('service-filter-list__element service-filter-list__element--enabled', () => {
     const addFilter = jest.fn();
     const removeFilter = jest.fn();
     const service: ServiceAsFilter = { id: 'tv', isEnabled: true, name: 'Television' };
-    const { getByText } = render(<ServiceFilterListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
+    const { getByRole } = render(<ServiceFilterListElement service={service} addFilter={addFilter} removeFilter={removeFilter} />);
 
-    const element = getByText(service.name);
+    const element = getByRole('listitem');
 
-    expect(element).toHaveClass('service-filter-list__element service-filter-list__element--enabled', { exact: true });
+    expect(element).toHaveClass('filter-list-element filter-list-element--enabled', { exact: true });
   });
 });

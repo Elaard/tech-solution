@@ -1,6 +1,6 @@
-import { BasicService } from '../models/Service/ServiceInfo';
+import { Service } from '../models/Service/Service';
 
-export const dataServices: BasicService[] = [
+export const dataServices: Service[] = [
   {
     id: 'internet',
     name: 'Internet',

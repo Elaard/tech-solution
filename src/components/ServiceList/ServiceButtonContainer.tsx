@@ -1,16 +1,17 @@
 import React from 'react';
 import { useCartContext } from '../../contexts/CartContext';
 import ServiceButton from './ServiceButton';
+import { ComboInformation } from '../../models/Shared/ServiceInfoVM';
 
 interface ServiceButtonContainerProps {
   title: string;
-  serviceId: string;
+  service: ComboInformation;
 }
 
-export default function ServiceButtonContainer({ serviceId, ...rest }: ServiceButtonContainerProps) {
+export default function ServiceButtonContainer({ service, ...rest }: ServiceButtonContainerProps) {
   const { addItemToCart } = useCartContext();
   const onClick = () => {
-    addItemToCart(serviceId);
+    addItemToCart(service);
   };
   return <ServiceButton onClick={onClick} {...rest} />;
 }

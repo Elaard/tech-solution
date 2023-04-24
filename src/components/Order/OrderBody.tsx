@@ -1,9 +1,9 @@
 import React from 'react';
 import OrderList from './OrderList';
-import { ServiceInfoVM } from '../../models/Shared/ServiceInfoVM';
+import { ComboInformation } from '../../models/Shared/ServiceInfoVM';
 
 interface OrderBodyProps {
-  cartItems: ServiceInfoVM[];
+  cartItems: ComboInformation[];
 }
 
 export default function OrderBody({ cartItems }: OrderBodyProps) {

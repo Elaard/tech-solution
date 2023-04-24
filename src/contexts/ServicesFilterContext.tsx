@@ -1,18 +1,18 @@
 import React, { createContext, useCallback, useEffect, useState } from 'react';
 import { useContext } from 'react';
 import { ServiceOffer } from '../models/Service/ServiceOffer';
-import { ServiceToOrder } from '../models/Service/ServiceInfo';
+import { Combo } from '../models/Service/Combo';
 import { ServiceYear } from '../models/Service/ServiceYear';
-import { ServiceAvailableYears } from '../models/Service/ServiceAvailableYears';
+import { ServiceId } from '../models/Service/ServiceId';
 
 export interface ServicesFilterContext {
-  addFilter: (filterId: string) => void;
-  removeFilter: (filterId: string) => void;
+  addFilter: (filterId: ServiceId) => void;
+  removeFilter: (filterId: ServiceId) => void;
   setYearFilter: (year: ServiceYear) => void;
   isYearEqualToFilterYear: (providedYear: ServiceYear) => boolean;
-  isIncludedServiceFilterEnabled: (filterId: string) => boolean;
-  getAvailableYears: () => ServiceAvailableYears;
-  getFilteredServices: () => ServiceToOrder[];
+  isIncludedServiceFilterEnabled: (filterId: ServiceId) => boolean;
+  getAvailableYears: () => ServiceYear[];
+  getFilteredComboOrders: () => Combo[];
 }
 
 const ServicesFilterProvider = createContext<ServicesFilterContext>({
@@ -22,7 +22,7 @@ const ServicesFilterProvider = createContext<ServicesFilterContext>({
   isYearEqualToFilterYear: () => false,
   isIncludedServiceFilterEnabled: () => false,
   getAvailableYears: () => [],
-  getFilteredServices: () => [],
+  getFilteredComboOrders: () => [],
 });
 
 ServicesFilterProvider.displayName = 'ServicesFilterContextProvider';
@@ -58,21 +58,21 @@ const ServicesFilterContext = ({ children, services }: ServicesFilterContextProp
   const isIncludedServiceFilterEnabled = (serviceId: string) => includedServices.includes(serviceId);
 
   const getPackageByIncludedServices = (includedServiceIds: string[]) => {
-    return services.packages.filter(({ includedServices }) => {
+    return services.comboServices.filter(({ includedServices }) => {
       return includedServiceIds.every((id) => includedServices.some((includedService) => includedService.id === id));
     });
   };
 
-  const filterPackagesByYear = (year: ServiceYear, packages: ServiceToOrder[]) => {
-    return packages.filter((pack) => pack.year === year);
+  const filterPackagesByYear = (year: ServiceYear, comboServices: Combo[]) => {
+    return comboServices.filter((pack) => pack.year === year);
   };
 
-  const getFilteredServices = () => {
-    let packages = services.packages;
+  const getFilteredComboOrders = () => {
+    let comboServices = services.comboServices;
     if (includedServices.length) {
-      packages = getPackageByIncludedServices(includedServices);
+      comboServices = getPackageByIncludedServices(includedServices);
     }
-    return filterPackagesByYear(year, packages);
+    return filterPackagesByYear(year, comboServices);
   };
 
   const setYearFilter = (providedYear: ServiceYear) => setYear(providedYear);
@@ -85,7 +85,7 @@ const ServicesFilterContext = ({ children, services }: ServicesFilterContextProp
         addFilter,
         removeFilter,
         setYearFilter,
-        getFilteredServices,
+        getFilteredComboOrders,
         isYearEqualToFilterYear,
         getAvailableYears,
         isIncludedServiceFilterEnabled,

@@ -1,29 +1,34 @@
 import React, { createContext } from 'react';
 import { useContext } from 'react';
 import { ServiceOffer } from '../models/Service/ServiceOffer';
-import { AdditionalService, BasicService, ServiceToOrder } from '../models/Service/ServiceInfo';
-import { ServiceInfoVM } from '../models/Shared/ServiceInfoVM';
+import { ComboIncludedServices, Combo } from '../models/Service/Combo';
+import { ComboInformation } from '../models/Shared/ServiceInfoVM';
+import { ServiceYear } from '../models/Service/ServiceYear';
+import { ServiceId } from '../models/Service/ServiceId';
+import { Service } from '../models/Service/Service';
 
 export interface ServicesContext {
   services: ServiceOffer;
-  getBasicServices: () => BasicService[];
-  getPackageById: (packageId: string) => ServiceToOrder | undefined;
-  getBasicServiceById: (basicServiceId: string) => BasicService | undefined;
-  getServicesToDisplay: (packages: ServiceToOrder[]) => ServiceInfoVM[];
-  isBasicServiceAvailableOnlyWithinPackage: (basicServiceId: string) => boolean;
+  getBasicServices: () => Service[];
+  getComboServiceById: (packageId: string) => Combo | undefined;
+  getBasicServiceById: (serviceId: string) => Service | undefined;
+  getComboServicesInformation: (comboServices: Combo[]) => ComboInformation[];
+  getComboServiceByYear: (year: ServiceYear) => Combo[];
+  isBasicServiceAvailableOnlyWithinCombo: (serviceId: string) => boolean;
 }
 
 const ServicesProvider = createContext<ServicesContext>({
   services: {
     services: [],
-    packages: [],
+    comboServices: [],
     availableYears: [],
   },
-  getPackageById: () => undefined,
+  getComboServiceById: () => undefined,
   getBasicServices: () => [],
   getBasicServiceById: () => undefined,
-  getServicesToDisplay: () => [],
-  isBasicServiceAvailableOnlyWithinPackage: () => false,
+  getComboServicesInformation: () => [],
+  getComboServiceByYear: () => [],
+  isBasicServiceAvailableOnlyWithinCombo: () => false,
 });
 
 ServicesProvider.displayName = 'ServicesContextProvider';
@@ -56,7 +61,7 @@ const services: ServiceOffer = {
       availableOnlyWithPackage: true,
     },
   ],
-  packages: [
+  comboServices: [
     //2023
     {
       id: '1',
@@ -135,6 +140,7 @@ const services: ServiceOffer = {
           id: 'dekoder4k',
           price: 0,
           description: 'dekoder4k za prawie darmo',
+          isForFree: true,
         },
       ],
     },
@@ -235,6 +241,7 @@ const services: ServiceOffer = {
           id: 'dekoder4k',
           price: 0,
           description: 'dekoder4k za prawie darmo',
+          isForFree: true,
         },
       ],
     },
@@ -335,6 +342,7 @@ const services: ServiceOffer = {
           id: 'dekoder4k',
           price: 0,
           description: 'dekoder4k za prawie darmo',
+          isForFree: true,
         },
       ],
     },
@@ -364,38 +372,50 @@ const services: ServiceOffer = {
 const ServicesContext = ({ children }: ServicesContextProps) => {
   const getBasicServices = () => services.services;
 
-  const getPackages = () => services.packages;
+  const getComboServices = () => services.comboServices;
 
-  const getBasicServiceById = (basicServiceId: string) => {
-    return getBasicServices().find(({ id }) => id === basicServiceId);
+  const getBasicServiceById = (serviceId: ServiceId) => {
+    return getBasicServices().find(({ id }) => id === serviceId);
   };
-  const isBasicServiceAvailableOnlyWithinPackage = (basicServiceId: string): boolean => {
-    return !!getBasicServiceById(basicServiceId)?.availableOnlyWithPackage;
+  const isBasicServiceAvailableOnlyWithinCombo = (serviceId: ServiceId): boolean => {
+    return !!getBasicServiceById(serviceId)?.availableOnlyWithPackage;
   };
-  const getPackageById = (packageId: string) => {
-    return getPackages().find((pack) => pack.id === packageId);
+  const getComboServiceByYear = (year: ServiceYear) => getComboServices().filter((comboService) => comboService.year === year);
+  const getComboServiceById = (comboId: string) => {
+    return getComboServices().find((pack) => pack.id === comboId) as Combo;
   };
-  const isServiceAvailableOnlyWithinPackage = (includedServices: AdditionalService[]) => {
+  const isServiceAvailableOnlyWithinComboServices = (includedServices: ComboIncludedServices[]) => {
     if (includedServices.length !== 1) {
       return false;
     }
-    return isBasicServiceAvailableOnlyWithinPackage(includedServices[0].id);
+    return isBasicServiceAvailableOnlyWithinCombo(includedServices[0].id);
   };
-  const getServicesToDisplay = (packages: ServiceToOrder[]): ServiceInfoVM[] => {
-    return packages.map((service) => {
+  const getComboServicesInformation = (comboServices: Combo[]): ComboInformation[] => {
+    return comboServices.map((service) => {
       return {
         ...service,
-        availableOnlyWithPackage: isServiceAvailableOnlyWithinPackage(service.includedServices),
-        includedServices: service.includedServices.map((includeService) => ({
-          ...includeService,
-          name: getBasicServiceById(includeService.id)?.name ?? '',
-        })),
+        availableOnlyWithPackage: isServiceAvailableOnlyWithinComboServices(service.includedServices),
+        includedServices: service.includedServices.map((includeService) => {
+          const basicService = getBasicServiceById(includeService.id);
+          return {
+            ...includeService,
+            name: basicService?.name ?? '',
+          };
+        }),
       };
     });
   };
   return (
     <ServicesProvider.Provider
-      value={{ services, getBasicServices, getPackageById, getBasicServiceById, getServicesToDisplay, isBasicServiceAvailableOnlyWithinPackage }}
+      value={{
+        services,
+        getBasicServices,
+        getComboServiceById,
+        getBasicServiceById,
+        getComboServicesInformation,
+        getComboServiceByYear,
+        isBasicServiceAvailableOnlyWithinCombo,
+      }}
     >
       {children}
     </ServicesProvider.Provider>

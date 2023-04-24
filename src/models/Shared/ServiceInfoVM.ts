@@ -1,14 +1,13 @@
+import { Service } from '../Service/Service';
 import { ServiceId } from '../Service/ServiceId';
 import { ServicePrice } from '../Service/ServicePrice';
 import { ServiceYear } from '../Service/ServiceYear';
 
-export interface AdditionalServiceVM {
-  id: ServiceId;
-  name: string;
+export interface IncludedServicesVM extends Service {
   description: string;
 }
 
-export interface ServiceInfoVM {
+export interface ComboInformation {
   id: ServiceId;
   name: string;
   year: ServiceYear;
@@ -17,5 +16,7 @@ export interface ServiceInfoVM {
   availableOnlyWithPackage: boolean;
 
   description: string;
-  includedServices: AdditionalServiceVM[];
+  includedServices: IncludedServicesVM[];
+
+  isForFree?: boolean;
 }

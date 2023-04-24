@@ -1,11 +1,11 @@
 import React from 'react';
-import { ServiceInfoVM } from '../../models/Shared/ServiceInfoVM';
+import { ComboInformation } from '../../models/Shared/ServiceInfoVM';
 
 import OrderIncludedServiceElement from './OrderIncludedServiceElement';
 import OrderRemoveButtonContainer from './OrderRemoveButtonContainer';
 
 interface OrderListElementProps {
-  cartItem: ServiceInfoVM;
+  cartItem: ComboInformation;
 }
 
 export default function OrderListElement({ cartItem }: OrderListElementProps) {
@@ -25,7 +25,7 @@ export default function OrderListElement({ cartItem }: OrderListElementProps) {
         </ul>
       </div>
       <div className="order-list-element-footer">
-        <OrderRemoveButtonContainer title={'usun z koszyka'} serviceId={cartItem.id} />
+        <OrderRemoveButtonContainer title={'usun z koszyka'} combo={cartItem} />
       </div>
     </li>
   );
